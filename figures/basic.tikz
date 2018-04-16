@@ -1,0 +1,16 @@
+\begin{tikzpicture}[x=0.66cm, y=0.66cm]
+	\draw[fill=system]     (0,0) rectangle ++(4,4) node[pos=0.5] {\LARGE B};
+	\draw[fill=individual] (4,0) rectangle ++(9,4) node[pos=0.5] {\LARGE D};
+	\draw[fill=individual] (0,4) rectangle ++(4,9) node[pos=0.5] {\LARGE C};
+	\draw[fill=normal]     (4,4) rectangle ++(9,9) node[pos=0.5] {\LARGE A};
+
+	\draw (4,0)  -- ++(0,-0.3) node[anchor=base, yshift=-1em] {$d$};
+	\draw (0,4)  -- ++(-0.3,0) node[anchor=east]              {$d$};
+	\draw (13,0) -- ++(0,-0.3) node[anchor=base, yshift=-1em] {$s$};
+	\draw (0,13) -- ++(-0.3,0) node[anchor=east]              {$s$};
+
+	\path[<->, draw, line width=1.5pt] (15,0) -- (0,0) -- (0,15);
+
+	\node[anchor=base, yshift=-1em] at (14.25,0) {$X$};
+	\node[anchor=east]              at (0,14.25) {$Y$};
+\end{tikzpicture}

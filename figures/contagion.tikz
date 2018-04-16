@@ -1,0 +1,42 @@
+\begin{tikzpicture}[x=0.66cm, y=0.66cm]\small
+	\draw[fill=individual] (10,0) -- (12,0) -- (8.4,2.4) -- cycle;
+	\draw[fill=individual] (0,10) -- (0,12) -- (2.4,8.4) -- cycle;
+
+	\node[anchor=west]  at (0,10.25) {\large M};
+	\node[anchor=south] at (10.4,0)  {\large N};
+
+	\draw[color=graph1, line width=1pt] (8,0)  -- (0,12);
+	\draw[color=graph1, line width=1pt] (0,8)  -- (12,0);
+	\draw[color=graph2, line width=1pt] (0,10) -- (13,4/3);
+	\draw[color=graph2, line width=1pt] (10,0) -- (4/3,13);
+
+	\draw (13,0)  -- (13,13)   -- (0,13);
+	\draw (4.8,0) -- (4.8,4.8) -- (0,4.8);
+	\draw (6.0,0) -- (6.0,6.0) -- (0,6.0);
+	\draw (2.4,0) -- (2.4,8.4);
+
+	\draw (13,0)  -- ++(0,-0.3) node[anchor=base, yshift=-1em] {$s$};
+	\draw (12,0)  -- ++(0,-0.3) node[anchor=base, yshift=-1em] {$x_2^c(0)$};
+	\draw (10,0)  -- ++(0,-0.3) node[anchor=base, yshift=-1em] {$x_1^{qc}(0)$};
+	\draw (8,0)   -- ++(0,-0.3) node[anchor=base, yshift=-1em] {$x_1^c(0)$};
+	\draw (6,0)   -- ++(0,-0.3) node[anchor=base, yshift=-1em, xshift=0.2em] {$d\!+\!qc$};
+	\draw (4.8,0) -- ++(0,-0.3) node[anchor=base east, yshift=-1em, xshift=0.75em]  {$d\!+\!c$};
+	\draw (2.4,0) -- ++(0,-0.3) node[anchor=base, yshift=-1em] {$\xi$};
+
+	\draw (0,13)  -- ++(-0.3,0) node[anchor=east] {$s$};
+	\draw (0,12)  -- ++(-0.3,0) node[anchor=east] {$y_1^c(0)$};
+	\draw (0,10)  -- ++(-0.3,0) node[anchor=east] {$y_2^{qc}(0)$};
+	\draw (0,8)   -- ++(-0.3,0) node[anchor=east] {$y_2^c(0)$};
+	\draw (0,6)   -- ++(-0.3,0) node[anchor=east] {$d\!+\!qc$};
+	\draw (0,4.8) -- ++(-0.3,0) node[anchor=east] {$d\!+\!c$};
+
+	\node at (11,1.5)   {$y_2^c(x)$};
+	\node at (11.8,3)   {$y_2^{qc}(x)$};
+	\node at (1.7,11)   {$y_1^c(x)$};
+	\node at (3.3,11.8) {$y_1^{qc}(x)$};
+
+	\path[<->, draw, line width=1.5pt] (15,0) -- (0,0) -- (0,15);
+
+	\node[anchor=base, yshift=-1em] at (14.25,0) {$X$};
+	\node[anchor=east]              at (0,14.25) {$Y$};
+\end{tikzpicture}

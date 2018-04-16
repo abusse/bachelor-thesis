@@ -1,0 +1,123 @@
+%!TEX root = bachelor.tex
+
+\chapter{Modell Vertiefung}%
+\label{chap:advanced}
+
+Die Annahme von \citeauthor{Wagner-2010} bezüglich seiner Bestimmung des optimalen Diversifikationsgrades in Abschnitt~3 ist nicht komplett zutreffend\footcite[\vgl{}][\pno~379(7)]{Wagner-2010}, da die Wahrscheinlichkeitsdichtefunktion der Gleichverteilung nicht durch $\phi(x)=\phi(y)=\flatfrac{1}{s}$ geben ist, sondern wie folgt definiert ist:
+%
+\begin{equation}
+	\phi_\sqcap(x) = \begin{cases}
+	                     \flatfrac{1}{s} & \text{für } 0 \leq x \leq s \\
+	                     0               & \text{sonst}
+	                 \end{cases} \quad\quad %
+	\phi_\sqcap(y) = \begin{cases}
+	                     \flatfrac{1}{s} & \text{für } 0 \leq y \leq s \\
+	                     0               & \text{sonst}
+	                 \end{cases} \label{eqn:def:equal_distribution}
+\end{equation}
+
+Da die Argumente der Wahrscheinlichkeitsdichtefunktion der Gleichverteilung in den Integralen in den \cref{eqn:model:pi2,eqn:model:piS} durchaus in einem Bereich liegen können, in dem \citeauthor{Wagner-2010}s Annahme nicht mehr zutrifft, ist auch seine Bestimmung für den optimalen Diversifikationsgrad für die Banken nur unter weiteren Annahmen gültig. Diese notwendigen Annahmen sollen im Verlauf diese Kapitels bestimmt werden und die allgemeine Lösung ohne diese Annahmen für die Gleichverteilung hergeleitet werden.
+
+\Cref{fig:error} illustriert die von \citeauthor{Wagner-2010} nicht berücksichtigten Fälle. Im in \cref{fig:error:1} dargestellten Fall werden von \citeauthor{Wagner-2010} die Flächen~P und~Q fälschlich bei der Berechnung bezüglich der Individuellen Krise über die Flächen~G \bzw{}~K in \cref{fig:divers} auf \pageref{fig:divers} mit berücksichtigt. Gleiches gilt für die Flächen~R und~S in \cref{fig:error:2}. Darüber hinaus berücksichtigt \citeauthor{Wagner-2010} die Flächen~T und~U fälschlicherweise bei der Berechnung bezüglich der systemischen Krise. Im Folgenden wird die von \citeauthor{Wagner-2010} betrachtete Situation als Fall~A, die Situation in \cref{fig:error:1} als Fall~B und die Situation in \cref{fig:error:2} als Fall~C bezeichnet.
+
+Es gilt zunächst die Grenzen zwischen den drei Fällen festzulegen. Diese lassen sich u.a. aus den Illustrationen der Fälle bestimmen. Es gilt:
+
+\begin{tabularx}{\textwidth}{ll}
+	\labelitemi & Fall~A wenn  \\
+	            & \hspace{1cm} $\begin{rcases}
+	                                y_1(0) < s \\
+	                                x_2(0) < s
+	                            \end{rcases}
+	                            \Leftrightarrow \ d < r_i \cdot s$\\
+	\labelitemi & Fall~B wenn  \\
+	            & \hspace{1cm} $\begin{rcases}
+	                                y_1(0) \geq s \ \wedge \ x_1(0) < s \\
+	                                x_2(0) \geq s \ \wedge y_2(0) < s
+	                            \end{rcases}
+	                            \Leftrightarrow \ d \geq r_i \cdot s \ \wedge \ d < s \cdot (1-r_i)$\\
+	\labelitemi & Fall~C wenn  \\
+	            & \hspace{1cm} $\begin{rcases}
+	                                y_1(0) \geq s \ \wedge \ x_1(0) \geq s \\
+	                                x_2(0) \geq s \ \wedge y_2(0) \geq s
+	                            \end{rcases}
+	                            \Leftrightarrow \ d \geq r_i \cdot s \ \wedge \ d \geq s \cdot (1-r_i)$
+\end{tabularx}
+
+\begin{figure}[p]
+	\centering
+	\begin{subfigure}[b]{\textwidth}\centering
+		\resizebox{0.725\textwidth}{!}{
+			\includetikz{figures/divers-error1}
+		}
+		\caption{Der Bankensektor für den Fall $d \geq r_i \cdot s \ \wedge \ d < s \cdot (1-r_i)$.}%
+		\label{fig:error:1}\vspace{4mm}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{\textwidth}\centering
+		\resizebox{0.725\textwidth}{!}{
+			\includetikz{figures/divers-error2}
+		}
+		\caption{Der Bankensektor für den Fall $d \geq r_i \cdot s \ \wedge \ d \geq s \cdot (1-r_i)$.}%
+		\label{fig:error:2}
+	\end{subfigure}
+	\caption[Der Bankensektor in den von \citeauthor{Wagner-2010} nicht differenzierten Fällen.]{Der Bankensektor in den von \citeauthor{Wagner-2010} nicht differenzierten Fällen. Färbung anlog zu \cref{fig:basic}. Blaue Bereiche werden bei \citeauthor{Wagner-2010} fälschlicherweise berücksichtigt.}%
+	\label{fig:error}
+\end{figure}
+
+Basierend auf der Fallunterscheidung lassen sich die Funktionen $\pi_2(r_2)$ und $\pi^S(r_1,r_2)$ allgemein bestimmen für sämtliche Verteilungen, die Außerhalb des Intervalls $[0,s]$ null sind:
+%
+{\small
+\begin{align}
+	\pi_2(r_2)     ={}& \begin{dcases}
+	                        \int_0^{x_2(0)} \int_0^{y_2(x)} \phi(x)\,\phi(y)\ \dd y\, \dd x                                                                  & \text{für Fall~A} \\
+	                        \int_0^{s} \int_0^{y_2(x)} \phi(x)\,\phi(y)\ \dd y\, \dd x                                                                       & \text{für Fall~B} \\
+	                        \int_{0}^{x_2(s)} \int_0^{s} \phi(x)\,\phi(y)\ \dd y\, \dd x + \int_{x_2(s)}^{s} \int_0^{y_2(x)} \phi(x)\,\phi(y)\ \dd y\, \dd x & \text{für Fall~C}
+	                    \end{dcases} \label{eqn:pi2-exact} \\
+	\pi^S(r_1,r_2) =  & \left\{\!\begin{aligned}
+	                                 & \displaystyle \int_0^{d} \int_0^{y_2(x)} \phi(x)\,\phi(y)\ \dd y\, \dd x \\
+	                                 & \displaystyle \int_{0}^{x_2(s)} \int_0^{s} \phi(x)\,\phi(y)\ \dd y\, \dd x + \int_{x_2(s)}^{d} \int_0^{y_2(x)} \phi(x)\,\phi(y)\ \dd y\, \dd x 
+	                             \end{aligned}\right\} \notag \\[1ex]
+	                  & \hspace{2.5cm} + \left\{\!\begin{aligned}
+	                                                  & \displaystyle \int_d^{x_1(0)} \int_0^{y_1(x)} \phi(x)\,\phi(y)\ \dd y\, \dd x & \text{für Fall~A\ \&\ B} \\
+	                                                  & \displaystyle \int_d^{s} \int_0^{y_1(x)} \phi(x)\,\phi(y)\ \dd y\, \dd x      & \text{für Fall~C}
+	                                              \end{aligned}\right\} \label{eqn:piS-exact}
+\end{align}}
+
+Basierend auf der allgemeinen Bestimmung für $\pi_2(r_2)$ und $\pi^S(r_1,r_2)$ lassen sich die Werte für die Gleichverteilung bestimmen. Diese sind in den \cref{eqn:equal:pi2-exact,eqn:equal:piS-exact} zusammengefasst.\pagebreak
+\begin{align}
+	\pi_2(r_2)     & = \begin{cases}
+	                       \displaystyle \frac{d^2}{2s^2r_2(1-r_2)}         & \text{für Fall~A} \\
+	                       \displaystyle \frac{2d-sr_2}{2s(1-r_2)}          & \text{für Fall~B} \\
+	                       \displaystyle 1 - \frac{(d-s)^2}{2s^2r_2(r_2-1)} & \text{für Fall~C}
+	                   \end{cases} \label{eqn:equal:pi2-exact}\\[2ex]
+	\pi^S(r_1,r_2) & = \left\{\!\begin{aligned}
+	                                & \displaystyle \frac{d^2 r_1}{2s^2(1-r_1)}               & \text{für Fall~A \& B} \\
+	                                & \displaystyle -\frac{(d^2-s^2) r_1 + (d-s)^2 }{2s^2r_1} & \text{für Fall~C}
+	                            \end{aligned}\right\} \notag \\[1ex]
+	               & \hspace{2cm} + \left\{\!\begin{aligned}
+	                                             & \displaystyle \frac{d^2(r_2-2)}{2s^2(r_2-1)}          & \text{für Fall~A \& B} \\
+	                                             & \displaystyle \frac{(d^2+s^2) r_2 -(d-s)^2}{2s^2r_2}  & \text{für Fall~C}
+	                                         \end{aligned}\right\}\label{eqn:equal:piS-exact}
+\end{align}
+
+Basierend auf der exakten Bestimmung lassen sich die optimalen Diversifikationsgrade nicht nur für den von \citeauthor{Wagner-2010} betrachteten Fall~A, sondern auch für die beiden anderen Fälle bestimmen. Da die Funktion $\pi_2(r) + (q-1)\pi^S(r,r)$ im Fall~B und~C kein lokales Minimum im jeweiligen Definitionsbereich besitzt, sind lediglich die Ränder des Definitionsbereichs Kandidaten für ein Optimum. Da die Funktion ferner im Intervall $\left[0,\flatfrac{d}{s}\right]$ stetig ist\footnote{$\Lim{r_2\nearrow\frac{s-d}{s}}=\Lim{r_2\searrow\frac{s-d}{s}}=\frac{d (q-1)}{s}-\frac{s}{2 d}+\frac{3}{2}$}, kann der Rand des Gesamtintervalls betrachtet werden. Durch Einsetzen der Ränder 0 und $\min\left[\flatfrac{d}{s},\flatfrac{1}{2}\right]$ lassen sich die optimalen Diversifizierungsgrade wie in \cref{eqn:opt-exact:r} zusammengefasst bestimmen:
+%
+{\small
+\begin{align}
+	\argmin_{r_1=r_2=r^\ast}\left[\pi_2(r^\ast) + (q-1)\pi^S(r^\ast,r^\ast)\right] \Leftrightarrow r^\ast = & \begin{dcases}
+	                                                                                                              \frac{1}{1+\sqrt{2q-1}} & \text{für Fall~A}       \\
+	                                                                                                              0                       & \text{für Fall~B und~C}
+	                                                                                                          \end{dcases} \label{eqn:opt-exact:r}
+\end{align}}
+
+Für die Bestimmung des optimalen Diversifikationsgrades aus der Sicht der Banken, gilt für die Fälle~B und~C dasselbe wie für die Bestimmung des volkswirtschaftlich optimalen Diversifikationsgrades und es ergibt sich:
+%
+{\small
+\begin{align}
+	\argmin_{r_2=r^E_2}\left[\pi_2(r^E_2) + (q-1)\pi^S(r_1,r^E_2)\right] \Leftrightarrow r^E_2 = & \begin{dcases}
+	                                                                                                   \frac{1}{1+\sqrt{q}} & \text{für Fall~A}       \\
+	                                                                                                   0                    & \text{für Fall~B und~C}
+	                                                                                               \end{dcases} \label{eqn:opt-exact:r2}
+\end{align}}
+
+Die Ergebnisse Zeigen, dass eine Überdiversifizierung nur in bestimmten Fällen auftritt und zwar genau dann, wenn der betrachtete Markt im Fall~A liegt. Außerhalb dieses Falls findet, anders als von \citeauthor{Wagner-2010} bestimmt, keine Überdiversifizierung statt. In diesem Fall ist es sowohl für die Banken als auch für die Volkswirtschaft optimal, wenn keine Diversifizierung vorgenommen wird. Der Grund hierfür wird insbesondere in \cref{fig:error:2} sehr deutlich. Da $d$ nicht viel kleiner als $s$ ist, kann durch die Diversifizierung das individuelle Risiko nur geringfügig verkleinert werden, während das Risiko für eine systemische Krise im Relation dazu überproportional steigt. An dieser Stelle ließe sich somit auch argumentieren, dass der optimal Diversifikationsgrad von der Risikobereitschaft der Bank abhängt. Bei einer Gleichverteilung und einem hohem Einlagenanteil $d$ würde eine Anlage, die einen maximale Realisierung ihres Wertes $s$ nur wenig größer als eins hat, ein größeres Risiko zur Insolvenz herrschen. Die Situation könnte jedoch anders gelegen sein für eine andere als die Gleichverteilung. Insbesondere bei der Betrachtung einer uni-modalen Verteilung, deren Modus rechts von $d$ liegt, könnte das Insolvenzrisiko einer solchen Konstellation gering sein.

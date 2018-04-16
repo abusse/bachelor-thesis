@@ -1,0 +1,189 @@
+%!TEX root = bachelor.tex
+
+\chapter{Diversifizierung}%
+\label{chap:div}
+
+In diesem Kapitel soll die Erweiterung des Basismodels aus dem vorherigen Kapitel durch den Faktor der Diversifizierung diskutiert werden, wie sie von \citeauthor{Wagner-2010} im dritten Abschnitt seiner Arbeit dargestellt wird. Es wird hierfür zunächst, wie in \cref{sec:div:model} erläutert, das Modell aus dem vorherigen Kapitel erweitert\footcite[\pno~377\psq(5\psq)]{Wagner-2010}. In \cref{sec:div:opt} wird der optimale Diversifizierungsgrad für allgemeine Verteilungen von $X$ \bzw{} $Y$ diskutiert\footcite[\pno~378\psq(6\psq)]{Wagner-2010} und in \cref{sec:div:equal} bezüglich einer Gleichverteilung konkretisiert\footcite[\pno~379\psq(7\psq)]{Wagner-2010}. Der letzte Abschnitt dieses Kapitels betrachtet Ansteckungen zwischen den Banken im allgemeinen Fall und im Falle der Gleichverteilung\footcite[\ppno~382--385(10--13)]{Wagner-2010}. Zu Gunsten der Übersichtlichkeit wird im Rahmen dieser Arbeit auf die Diskussion von Bankenfusionen und Versicherungen zwischen Banken, wie sie von \citeauthor{Wagner-2010} im fünften Abschnitt seiner Arbeit präsentiert werden\footcite[\ppno~381\psq(9\psq)]{Wagner-2010}, verzichtet.
+
+\section{Diversifizierungsmodell}%
+\label{sec:div:model}
+
+\Citeauthor{Wagner-2010} nimmt zur Erweiterung des Basismodels um den Faktor der Diversifizierung an, dass eine Bank auch Teile ihres Kapitals zum Zeitpunkt~1 in die Aktivitäten, in die primär die anderen Bank investiert, investieren kann. Die Höhe dieses Anteils sei durch $r_i \in \left[0,\flatfrac{1}{2} \right]$ für Bank $i$ bestimmt. Der Fall $r_i = \flatfrac{1}{2}$ würde hierbei für Bank $i$ eine vollständige Diversifikation bedeuten. Durch die Diversifikation ändern sich die Wertfunktionen $v_i$ in Abhängigkeit von $x$ und $y$ gemäß den \cref{eqn:div:v1,eqn:div:v2}:
+
+\begin{align}
+	v_1(x,y) & = (1-r_1)x + r_1y \label{eqn:div:v1} \\
+	v_2(x,y) & = r_2x + (1-r_2)y \label{eqn:div:v2}
+\end{align}
+
+Hieraus lassen sich die Funktionen $y_i(x_i)$ bestimmen, welche die Ergebnisse bezüglich des Investments $Y$ quantifizieren, die die Grenze zur Krise für Bank~$i$ in Abhängigkeit von $x_i$ darstellt. Ebenfalls lassen sich die Umkehrfunktionen $x_i(y_i)$ bestimmen, welche die Ergebnisse bezüglich des Investments $X$ quantifizieren, die die Grenze zur Krise für für Bank~$i$ in Abhängigkeit von $y_i$ darstellt:
+
+\begin{align}
+	v_1(x_1,y_1) \overset{!}{=} d & \quad\Rightarrow\quad\begin{cases}
+	                                                         y_1(x_1) = \displaystyle \frac{d}{r_1}   - \frac{1-r_1}{r_1} x_1   \\
+	                                                         x_1(y_1) = \displaystyle \frac{d}{1-r_1} - \frac{r_1}{1-r_1} y_1   \\
+	                                                     \end{cases} \label{eqn:div:boarder1}\\
+	v_2(x_2,y_2) \overset{!}{=} d & \quad\Rightarrow\quad\begin{cases}
+	                                                         y_2(x_2) = \displaystyle \frac{d}{1 - r_2} - \frac{r_2}{1-r_2} x_2 \\
+	                                                         x_2(y_2) = \displaystyle \frac{d}{r_2}     - \frac{1-r_2}{r_2} y_2 \\
+	                                                     \end{cases} \label{eqn:div:boarder2}
+\end{align}
+
+Dies bedeutet, dass Bank~1 für $y\!<\!y_1(x)$ insolvent wäre und Bank~2 für $y\!<\!y_2(x)$. Die Sachverhalt ist in \cref{fig:divers} dargestellt. Durch die Rotation der Grenzen zu den Krisen um den Punkt $(d,d)$, steigt die Wahrscheinlichkeit, dass keine Krise eintritt vom Bereich~I um die Bereiche~H und~J. Zur gleichen Zeit steigt jedoch die Wahrscheinlichkeit einer systemischen Krise vom Bereich~E um die Bereiche~F und~L. Durch die Diversifikation sinkt somit lediglich die Wahrscheinlichkeit individueller Krisen (Bereiche~G und~K). Die Reduzierung des individuellen Risikos einer Bank wird somit durch die erhöhte Gefahr einer systemischen Krise erkauft.
+
+\section{Optimale Diversifizierung}%
+\label{sec:div:opt}
+
+\Citeauthor{Wagner-2010} fährt fort die optimalen Diversifizierungsgrade der Banken zu bestimmen. Es wird hierbei zwischen dem Diversifikationsgrad unterschieden, der aus Sicht der gesamten Volkswirtschaft optimal ist ($r^\ast$), und dem Diversifikationsgrad, der aus Sicht einer einzelnen Bank optimal ist ($r^E$). Da kein Einfluss auf die Realisierung von $x$ \bzw{} $y$ genommen werden kann und ex-ante auch kein Wissen darüber besteht, können lediglich die Verluste im Falle einer Krise minimiert werden. Da im Modell beide Banken vollkommen symmetrisch sind, sind für sie die selben Diversifizierungsgrade optimal.  Aus diesem Grund soll im Weiteren für die Überlegungen lediglich Bank~2 berücksichtigt werden. Die Diskussion trifft jedoch im selben Maße auf Bank~1 zu.
+
+Der Verlust einer Bank ist bestimmt durch den Term $c\left[\pi_i(r_i) + (q-1)\pi^S(r_1,r_2)\right]$ mit $\pi_i\!\coloneqq\!\pi^I_i + \pi^S$. Hieraus lassen sich die Optimalitätskriterien erster Ordnung zur Bestimmung des optimalen Diversifikationsgrades ableiten. Für den optimalen Diversifikationsgrad aus volkswirtschaftlicher Sicht ist hierbei das Kriterium in \cref{eqn:model:opt_all} relevant und für den optimalen Diversifikationsgrad aus der individuellen Sicht einer Bank \cref{eqn:model:opt_one}:
+
+\begin{figure}[t!]\centering
+	\resizebox{0.95\textwidth}{!}{
+		\includetikz{figures/divers}
+	}
+	\caption[Krisen im diversifizierten Bankensektor.]{Krisen im diversifizierten Bankensektor\footnotemark. Färbung anlog zu \cref{fig:basic}. Rotation der Krisenübergänge um den Punkt $(d,d)$ auf Grund Diversifikation der Banken.}%
+	\label{fig:divers}
+\end{figure}
+\footcitetext[nach][\pno~378(6), Fig.~2]{Wagner-2010}
+
+\vspace{-0.75cm}
+\begin{gather}
+	\displaystyle \dv{r} \left[ c(\pi_i(r) + (q-1)\pi^{S}(r,r)) \right] \overset{!}{=} 0 \quad \text{mit}\,r_1=r_2=r \label{eqn:model:opt_all} \\
+	\displaystyle \pdv{r_i} \left[ c(\pi_i(r_i) + (q-1)\pi^{S}(r_1,r_2)) \right] \overset{!}{=} 0                    \label{eqn:model:opt_one}
+\end{gather}
+
+Für den Fall der volkswirtschaftlich optimalen Diversifikation (\cref{eqn:model:opt_all}) ist die Wahrscheinlichkeit $\pi_2(r_2)$ und ihre Ableitung nach $r_2$ in \cref{eqn:model:pi2,eqn:model:dpi2} dargestellt. Die Wahrscheinlichkeit $\pi_2(r_2)$ liegt in \cref{fig:divers} über der Fläche~EFKL. Hieraus ergeben sich die Integrationsgrenzen des inneren und äußeren Integrals. Die Herleitung der ersten Ableitung von $\pi_2(r_2)$ nach $r$ wird in \cref{appendix:pi2} detailliert erläutert, da die Lösung in der Arbeit von \citeauthor{Wagner-2010} einen Fehler enthält.
+
+\begin{align}
+	\pi_2(r_2)  & = \int_0^{x_2(0)} \int_0^{y_2(x)} \phi(x)\,\phi(y)\ \dd y\, \dd x                                             \label{eqn:model:pi2}  \\
+	\pi'_2(r_2) & = \int_0^{\flatfrac{d}{r_2}} \frac{d-x}{(r_2-1)^2} \cdot \phi(x)\,\phi\left(\frac{r_2\,x-d}{r-1}\right) \dd x \label{eqn:model:dpi2}
+\end{align}
+
+Ferner sind in den \cref{eqn:model:piS,eqn:model:dpiS} die Wahrscheinlichkeit $\pi^{S}$ und ihre Ableitung nach $r$ zur Bestimmung der volkswirtschaftlich optimalen Diversifikation dargestellt. Die systemische Krise entsteht sobald die Realisierung von $Y$ kleiner als $y_1(x)$ und $y_2(x)$ ist. Sollte $y_2(x)\!<\!y_1(x)$ gelten, bedeutet dies, dass Bank~2 kritisch ist bezüglich des Eintretens einer systemischen Krise, da Bank~1 an diesem Punkt bereits insolvent ist. Für $y_2(x)\!>\!y_1(x)$ gilt das Gegenteil\footnote{Im Falle $y_2(x)\!=\!y_1(x)$ werden beide Banken bei der selben Realisierung von $X$ und $Y$ insolvent.}. Hieraus ergeben sich die beiden Summanden der \cref{eqn:model:piS,eqn:model:dpiS}. Der linke Summand berücksichtigt, dass eine systemische Krise eintritt, wenn Bank~2 insolvent ist unter der Annahme, dass Bank~1 dies bereits ist. Der rechte Summand spiegelt dies analog für Bank~1 wieder. Die inneren Integrationsgrenzen ergeben sich wie oben aus der Überlegung zur Wahrscheinlichkeit der Krise von Bank~2. Die Grenzen des äußeren Integrals ergeben sich aus der Fallunterscheidung, welche durch $y<\min\left(y_1(x), y_2(x)\right)$ notwendig wird und können durch die \cref{eqn:div:boarder1,eqn:div:boarder2} direkt bestimmt werden.
+
+\begin{align}
+	\pi^{S}(r)       & = \int_0^{d} \int_0^{y_2(x)} \phi(x)\,\phi(y)\ \dd y\, \dd x \notag                                                                      \\
+	                 & \hspace{2cm} + \int_d^{x_1(0)} \int_0^{y_1(x)} \phi(x)\,\phi(y)\ \dd y\, \dd x \qquad \text{mit } r_1=r_2=r		 \label{eqn:model:piS}        \\
+	\pi^{S\prime}(r) & = \int_0^{d} \frac{d-x}{(r-1)^2} \cdot \phi(x)\,\phi\left(\frac{rx-d}{r-1}\right) \dd x \notag                                           \\
+	                 & \hspace{2cm} + \int_d^{\flatfrac{d}{1-r}} \frac{x-d}{r^2} \cdot \phi(x)\,\phi\left(\frac{d-x}{r} + x\right) \dd x \label{eqn:model:dpiS}
+\end{align}
+
+
+Weiter zeigt \citeauthor{Wagner-2010} zuerst, dass eine vollständige Diversifikation sowohl aus volkswirtschaftlicher als auch individueller Sicht unabhängig von der Verteilung von $X$ und $Y$ nicht optimal ist, da gilt:
+
+\begin{align}
+	\pi'_2(r_2=\frac{1}{2})                        & = \int_0^{2d} 4(d-x) \cdot \phi(x)\,\phi\left(x-2d\right) \dd x = 0 	              \label{eqn:model:dpi2_r}    \\
+	\pi^{S\prime}(r_1=\frac{1}{2},r_2=\frac{1}{2}) & = \int_0^{d} 4(d-x) \cdot \phi(x)\,\phi\left(x-2d\right) \dd x \notag                                         \\
+	                                               & \hspace{2cm} + \int_d^{2d} 4(x-2d) \cdot \phi(x)\,\phi\left(2d-x\right) \dd x \neq 0 \label{eqn:model:dpiS_r}
+\end{align}
+
+Die Aussage in \cref{eqn:model:dpi2_r} ist wahr, da der Integrand im Intervall $[0,2d]$ punktsymmetrisch zu $d$ ist. Auf Grund dieser Symmetrie muss ferner das linke Integral in \cref{eqn:model:dpiS_r} ungleich null sein muss. Darüber hinaus ist der Integrand des rechten Integrals im Intervall $[0,2d]$ eine Spiegelung des linken Integranden, sodass auch die Summe beider Integrale ungleich null sein muss. Somit wird die notwendige Bedingung in \cref{eqn:model:pi2} für eine vollständige Diversifizierung nicht erfüllt. Deshalb kann eine vollständige Diversifikation aus volkswirtschaftlicher Sicht niemals optimal sein.
+
+Für den optimalen Grad der Diversifikation aus Sicht von Bank~2 gilt weiterhin die Aussage in \cref{eqn:model:dpi2_r}. Darüber hinaus entfällt in der \cref{eqn:model:dpiS_r} der rechte Summand, da dieser lediglich von $r_1$ abhängt. Dies bedeutet, dass auch die notwendige Bedingung in \cref{eqn:model:opt_one} nicht erfüllt werden kann und somit eine vollständige Diversifikation auch aus der individuellen Sicht von Bank~2 den Verlust im Falle einer Krise nicht minimieren kann.
+
+\Citeauthor{Wagner-2010} begründet dies damit, dass, wie \cref{eqn:model:pi2} zeigt, die Varianz des Portfolios durch vollständige Diversifikation gesenkt wird, der Grenznutzen hierfür jedoch null ist. Im Gegenzug verringert jedoch eine geringere Diversifikation das Risiko einer systemischen Krise. Somit ist der Grenznutzen einer Verringerung des Diversifikationsgrades strikt positiv. Dies bedeutet, wie bereits erwähnt, dass die Senkung des individuellen Risikos einer Bank mit der Steigerung des Risikos einer systemischen Krise einher geht und diese beiden Aspekte gegeneinander abgewogen werden müssen.
+
+\section{Gleichverteilung}%
+\label{sec:div:equal}
+
+Neben dem Aufzeigen, dass eine vollständige Diversifizierung nicht optimal ist, bestimmt \citeauthor{Wagner-2010} die optimalen Diversifikationsgrade für eine Gleichverteilung von $X$ und $Y$. Im Falle der Gleichverteilung nimmt  \citeauthor{Wagner-2010} zunächst $\phi(x) = \phi(y) = \flatfrac{1}{s}$ an. Daraus ergeben sich durch Einsetzen in \cref{eqn:model:pi2} \bzw{} \cref{eqn:model:piS} die Werte für $\pi_2$ und $\pi^S$ in den \cref{eqn:equal:pi2,eqn:equal:piS}:
+
+\begin{align}
+	\pi_2(r_2)     & = \frac{d^2}{2s^2r_2(1-r_2)}			                                                                \label{eqn:equal:pi2}          \\
+	\pi^S(r_1,r_2) & = \frac{d^2}{s^2}	\left[ 1 + \frac{1}{2} \left( \frac{r_1}{1-r_1} + \frac{r_2}{1-r_2} \right) \right] \label{eqn:equal:piS}
+\end{align}
+
+\Cref{eqn:equal:piS} ergibt sich durch einfaches Einsetzen, Lösen des Integrals und Vereinfachen. Durch das Einsetzen in \cref{eqn:model:opt_all} ergibt sich der volkswirtschaftlich optimale Diversifizierungsgrad von $r^\ast = \left(1 + \sqrt{2q-1} \right)^{-1}$ und durch das Einsetzen in \cref{eqn:model:opt_one} der optimale Diversifizierungsgrad aus Sicht der Banken von $r^E = (1+\sqrt{q})^{-1}$. Hieraus ergeben sich ferner die Diversifikationsgrade für die Extremwerte des zusätzlichen Verlusts bei vorzeitiger Liquidierung. Für den Fall, dass es nahezu keine zusätzlichen Verluste gibt, erweist sich sowohl individuell als auch volkswirtschaftlich eine nahezu vollständige Diversifikation als optimal (\cref{eqn:lim:1}). Dies lässt sich damit begründen, dass keine zusätzlichen Kosten durch die Übertragung des Investments an eine andere Bank anfallen. Somit können die Investments zwischen den Banken Übertragen werden, um das Risiko der Insolvenz beider Banken zu verringern. Diese Überlegung wird von \citeauthor{Wagner-2010} in ähnlicher Form in seiner Diskussion der hier nicht berücksichtigten Möglichkeit der Bankenfusion dargelegt\footcite[\vgl{}][\pno~381(9)]{Wagner-2010}.
+
+\begin{align}
+	\lim_{q\to1} r^\ast = \lim_{q\to1} r^E = \frac{1}{2} 	\label{eqn:lim:1}
+\end{align}
+
+Für den Fall des unbegrenzten zusätzlichen Verlustes (\cref{eqn:lim:inf}) ist für beide Szenarien der Verzicht auf Diversifikation optimal. Dies lässt sich dadurch begründen, dass durch die Kosten ein Übertrag einem Komplettverlust gleich kommt und somit die Gefahr einer Insolvenz nicht verringert werden kann.
+
+\begin{align}
+	\lim_{q\to\infty} r^\ast = \lim_{q\to\infty} r^E = 0 	\label{eqn:lim:inf}
+\end{align}
+
+Das vorangegangene Kapitel hat bereits gezeigt, dass eine vollständige Diversifizierung in keinem Fall optimal ist. Die Betrachtung des Beispieles einer Gleichverteilung bestätigt dies. Ferner lässt sich feststellen, dass, zumindest im Falle der Gleichverteilung, die Banken stärker diversifizieren als es aus volkswirtschaftlicher Sicht sinnvoll ist. Da die optimalen Diversifikationsgrade, wie von \citeauthor{Wagner-2010} bestimmt, lediglich von $q$ abhängen, lässt sich das Ausmaß der Überdiversifizierung quantifizieren. Über die Betrachtung von \citeauthor{Wagner-2010} hinaus lässt sich somit das Maximum der Überdiversifizierung bestimmen, welches bei $q^{max} \approx 4,439$ mit einer Differenz von \num{5,918} Prozentpunkten liegt:
+
+\begin{gather}
+	\displaystyle \dv{r} \left[ r^E(q) - r^\ast(q) \right] \overset{!}{=} 0 \quad \Leftrightarrow\quad q^{max} \approx 4,439 \\
+	r^E(q^{max}) - r^\ast(q^{max}) \approx 0,05918
+\end{gather}
+
+Die Überdiversifizierung fällt dabei links von $q^{max}$ wesentlich stärker ab als rechts davon. Somit hängt die Problematik der Überdiversifizierung stark vom Betrachteten Markt und den Investments ab. In einem Markt mit $q$ nahe eins kann der Effekt vernachlässigbar gering sein. Dies hätte zur Konsequenz, dass in solch einem Markt eine Regulierung bezüglich der Diversifizierung nicht nötig wäre, da die Banken ein intrinsisches Interesse daran haben, einen geeigneten Diversifikationsgrad zu wählen.
+
+\section{Ansteckung}
+
+\Citeauthor{Wagner-2010} schließt die Diskussion seines Models mit der Erweiterung um die Möglichkeit der Ansteckung. Hierfür führen die Anleger zum Zeitpunkt~2 die Erwägung durch, ob die Möglichkeit der Insolvenz ihrer Bank durch die Insolvenz der anderen Bank möglich ist. Dabei werden von \citeauthor{Wagner-2010} drei Fälle unterschieden:
+
+\begin{tabularx}{\textwidth}{ll@{ : }X}
+	\labelitemi & $v_2 - qc \geq d$	& Bank~2 bleibt unabhängig von anderen Banken solvent, da selbst im Falle der Liquidierung der Investition Anleger die Rückzahlung ihrer Anlage erwarten können und somit nicht vorzeitig ihr Kapital abziehen. \\
+	\labelitemi & $v_2 - c < d$		& Unabhängig von Bank~1 wird Bank~2 voraussichtlich zum Zeitpunkt~3 insolvent sein, daher werden die Anleger ihr Kapital zum Zeitpunkt~2 abziehen. \\
+	\labelitemi	& $v_2-qc < d \leq v_2-c$ & Die Solvenz von Bank~2 ist abhängig von Bank~1. \\
+	\multicolumn{3}{l}{\begin{tabularx}{\textwidth}{@{\hspace{2.5cm}}ll@{ : }X}
+		\raisebox{0.75mm}{\large$\drsh$} & \hspace{-4mm} $v_1 -qc \geq d$ & Kunden von Bank~1 werden genau wie Bank~1 nicht ihr Kapital abziehen, daher bleibt Bank~2 auch in dem Fall solvent, dass die Kunden ihr Kapital abziehen, da der Verlust der Bank höchstens $c$ ist. \\
+		\raisebox{0.75mm}{\large$\drsh$} & \hspace{-4mm} $v_1 - qc < d$ & Kunden können erwarten, dass beide Banken insolvent werden, wenn Kunden ihr Kapital bei den Banken abziehen und somit die Liquidierungskosten $qc$ betragen. Daher werden die Kunden ihr Kapitel bei beiden Banken abziehen.
+	\end{tabularx}}
+\end{tabularx}
+
+Aus dieser Fallunterscheidung ergibt sich eine Unterscheidung für die \cref{eqn:div:boarder1,eqn:div:boarder2} auf \cpageref{eqn:div:boarder1}:
+
+\begin{align}
+	y_1^c(x) = \frac{d+c}{r_1} - \frac{1-r_1}{r_1}x   & \quad \text{und} \quad y_1^{qc}(x) = \frac{d+qc}{r_1} - \frac{1-r_1}{r_1}x   \\
+	y_2^c(x) = \frac{d+c}{1-r_2} - \frac{r_2}{1-r_2}x & \quad \text{und} \quad y_2^{qc}(x) = \frac{d+qc}{1-r_2} - \frac{r_2}{1-r_2}x
+\end{align}
+
+Für den Fall $y_1^c(0) < y_2^{qc}(0)$ existieren keine individuellen Krisen, sondern nur eine systemische Krise, welche im Fall $y<\min\left( y_1^{qc}(x),y_2^{qc}(x)\right)$ eintritt. Diese tritt in diesem Fall auch für den Fall $y_1^c(0) \geq y_2^{qc}(0)$ ein. Jedoch gibt es in dem Szenario auch individuelle Krisen, für Bank~1 falls $y_2^{qc}(x) \leq y < y_1^c(x)$ ist und für Bank~2 falls $y_1^{qc}(x) \leq y < y_2^c(x)$ gilt. Diese Situation ist in \cref{fig:contagion} dargestellt, wobei den Fläche~M eine individuelle Krise der Bank~1 und die Fläche~N eine individuelle Krise der Bank~2 darstellt. Aus der Implikation in \cref{eqn:cont:impl} lässt sich schließen, dass im Falle vollständiger Diversifikation keine individuellen sondern nur systemische Krisen auftreten können. Ferner ist, wie in der Betrachtung ohne Ansteckung, auch hier eine vollständige Diversifikation weder individuell noch volkswirtschaftlich optimal.
+
+\begin{align}
+	y_1^c(0) \geq y_2^{qc}(0) \quad \Rightarrow \quad r \leq \frac{d+c}{2d+qc+c} < \frac{1}{2} \quad \text{für} \quad r_1 = r_2 = r \label{eqn:cont:impl}
+\end{align}\vspace{-15mm}
+\begin{figure}[t!]\centering
+	\resizebox{0.95\textwidth}{!}{
+		\includetikz{figures/contagion}
+	}
+	\caption[Ansteckung im diversifizierten Bankensektor.]{Ansteckung im diversifizierten Bankensektor\footnotemark.}
+	\label{fig:contagion}
+\end{figure}
+\footcitetext[nach][\pno~384(12), Fig.~3]{Wagner-2010}
+
+Bevor der optimalen Diversifizierungsgrad $r^\ast$ untersucht wird, wird von \citeauthor{Wagner-2010} zunächst der Einfluss des Diversifizierungsgrades von Bank~2 auf Bank~1 untersucht. Hierfür wird zunächst der Punkt~$\xi$ gemäß \cref{eqn:cont:xi} definiert, an dem die Bedingung $y_2^{qc}(x) \leq y_1^c(x)$ gerade noch gilt. Es lässt sich daraus die Wahrscheinlichkeit $\pi_1$ für die individuelle Krise von Bank~1 bestimmen, welche im Fall $y_2^{qc}(x) \leq y < y_1^c(x)$ eintritt (\vgl \cref{eqn:cont:pi1}). Analog zum Rechenweg, erläutert in \cref{appendix:pi2}, lässt sich die Änderung von $\pi_1$ in Abhängigkeit von $r_2$ bestimmen (\vgl \cref{eqn:cont:dpi1}):
+
+\begin{align}
+	y_2^{qc}(\xi) \overset{!}{=} y_1^c(\xi) \quad & \Rightarrow \quad \xi = \frac{(1-r_2)(d+c)-r_1(d+qc)}{(1-r_2)(1-r_2)-r_1r_2} \label{eqn:cont:xi}   \\
+	\pi_1                                         & = \int_0^{\xi} \int_{y_2^{qc}}^{y_1^c(x)} \phi(x)\,\phi(y)\ \dd y\, \dd x    \label{eqn:cont:pi1}  \\
+	\pdv{\pi_1}{r_2}                              & = - \int_0^{\xi} \pdv{y_2^{qc}(x)}{r_2} \phi(x)\,\phi(y_2^{qc}(x))\ \dd x    \label{eqn:cont:dpi1}
+\end{align}
+
+Ferner gilt es, die Änderung der Wahrscheinlichkeit einer systemischen Krise in Abhängigkeit von $r_2$ zu bestimmen. Es gilt \cref{eqn:cont:piS}, da $y_1^{qc}(x) \geq y_2^{qc}(x)$ für $x \leq d+ qc$ und $y_1^{qc}(x) < y_2^{qc}(x)$ für $x > d+qc$ ist. Somit ergibt sich die Änderung der Wahrscheinlichkeit bezüglich $r_2$ wie in \cref{eqn:cont:dpiS} dargestellt.
+
+\begin{align}
+	\pi^{S}(r_1,r_2)            & = \int_0^{d+qc} \int_0^{y_2^{qc}(x)} \phi(x)\,\phi(y)\ \dd y\, \dd x + \int_{d+qc}^{x_1^{qc}(0)} \int_0^{y_1^{qc}(x)} \phi(x)\,\phi(y)\ \dd y\, \dd x 																		\label{eqn:cont:piS} \\
+	\pdv{\pi^{S}(r_1,r_2)}{r_2} & = \int_0^{d+qc} \pdv{y_2^{qc}(x)}{r_2} \phi(x)\,\phi(y_2^{qc}(x))\ \dd x 	\label{eqn:cont:dpiS}
+\end{align}
+
+Aus der Implikation in \cref{eqn:cont:comp} ergibt sich eine negative Externalität zwischen den Banken, da eine Erhöhung des Diversifikationsgrades von Bank~2 das Risiko einer systemischen Krise bei Bank~1 stärker erhöht als es das Risiko einer individuellen Krise senkt.
+
+\begin{align}
+	(\xi < d+qc) \ \wedge \ \left(\pdv{y_2^{qc}(x)}{r_2} > 0, \ \forall x < d+qc\right) \ \Rightarrow \ \pdv{\pi^{S}(r_1,r_2)}{r_2} > -\pdv{\pi_1}{r_2} \label{eqn:cont:comp}
+\end{align}
+
+\Citeauthor{Wagner-2010} schließt seine Diskussion der Ansteckung analog zu \cref{sec:div:equal} und fährt fort, den optimalen volkswirtschaftlichen Diversifizierungsgrad $r^\ast$ zu bestimmen für den Fall, dass $X$ und $Y$ einer Gleichverteilung folgen. Für $r^\ast$ gilt $r_1 = r_2 =r^\ast$ woraus sich ferner \cref{eqn:cont:cond} ergibt:
+
+\begin{align}
+	r^\ast & = \min \left( \argmin_r(\pi_2+q\pi^S),\frac{d+c}{2d+qc+c}  \right) \label{eqn:cont:cond}
+\end{align}
+
+Analog zum Vorgehen bei der Bestimmung des optimalen Diversifikationsgrades in \cref{sec:div:equal} ergeben sich durch Einsetzen, basierend auf der notwendigen Bedingung $\pi_2^{\prime}(r^\ast) + q\pi^{S\prime}(r^\ast) \overset{!}{=} 0$, die \cref{eqn:cont:equal_dpiS,eqn:cont:equal_dpi2,eqn:cont:equal_r,eqn:cont:equal_rast}:
+
+\begin{align}
+	\pi^{S\prime}(r)  & = \frac{1}{s^2} \left( \frac{d+qc}{1-r} \right)^2                                      \label{eqn:cont:equal_dpiS} \\
+	\pi_2^{\prime}(r) & = -\frac{1}{s^2} \int_{0}^{\xi} \frac{d+c-x}{r^2} + \frac{d +qc -x}{(1-r)^2} \dd x     \label{eqn:cont:equal_dpi2} \\
+	r                 & = \frac{1}{1+\sqrt{2q-1}\frac{d+q^2c}{d+qc}}                                           \label{eqn:cont:equal_r}    \\
+	r^\ast            & = \min \left( \frac{1}{1+\sqrt{2q-1}\frac{d+q^2c}{d+qc}} , \frac{d+c}{2d+qc+c} \right) \label{eqn:cont:equal_rast}
+\end{align}
+
+Aus diesem Ergebnis folgt \citeauthor{Wagner-2010}, dass unter Berücksichtigung von Ansteckung der optimale Diversifizierungsgrad kleiner ist als wenn die Ansteckung vernachlässigt wird.
+

@@ -1,0 +1,43 @@
+\begin{tikzpicture}[x=0.66cm, y=0.66cm]\small
+	\path[draw, fill=system]     (0,0) --  (6,0)  -- (4,4)   -- (0,6)  -- cycle;
+	\path[draw, fill=individual] (6,0) --  (12,0) -- (4,4)   -- cycle;
+	\path[draw, fill=individual] (0,6) --  (0,12) -- (4,4)   -- cycle;
+	\path[draw, fill=normal]     (12,0) -- (13,0) -- (13,13) -- (0,13) -- (0,12) -- (4,4) -- cycle;
+
+	\node at (2,2)      {\LARGE E};
+	\node at (4.66,0.8) {\LARGE L};
+	\node at (7,1.33)   {\LARGE K};
+	\node at (8.66,3)   {\LARGE J};
+	\node at (7,7)      {\LARGE I};
+	\node at (3.2,8)    {\LARGE H};
+	\node at (1.5,6.5)  {\LARGE G};
+	\node at (1,4.66)   {\LARGE F};
+
+	\node at (1.8,11) {$y_1(x)$};
+	\node at (11,1.5) {$y_2(x)$};
+
+	\draw[densely dotted, line width=0.75pt] (4,0) -- ++(0,13);
+	\draw[densely dotted, line width=0.75pt] (0,4) -- ++(13,0);
+	\draw[line width=1pt] (0,12) -- (6,0);
+	\draw[line width=1pt] (12,0) -- (0,6);
+
+	\draw[->, line width=1.5pt] (1.5,4) to [bend left=20]  (2,5);
+	\draw[->, line width=1.5pt] (4,6.5) to [bend right=20] (3,6);
+	\draw[->, line width=1.5pt] (4,1.5) to [bend right=20] (5,2);
+	\draw[->, line width=1.5pt] (6.5,4) to [bend left=20]  (6,3);
+
+	\draw (4,0)  -- ++(0,-0.3) node[anchor=base, yshift=-1em] {$d$};
+	\draw (0,4)  -- ++(-0.3,0) node[anchor=east]              {$d$};
+	\draw (13,0) -- ++(0,-0.3) node[anchor=base, yshift=-1em] {$s$};
+	\draw (0,13) -- ++(-0.3,0) node[anchor=east]              {$s$};
+
+	\draw (6,0)  -- ++(0,-0.3) node[anchor=base, yshift=-1em] {$x_1(0)$};
+	\draw (12,0) -- ++(0,-0.3) node[anchor=base, yshift=-1em, xshift=-0.5em] {$x_2(0)$};
+	\draw (0,6)  -- ++(-0.3,0) node[anchor=east]              {$y_2(0)$};
+	\draw (0,12) -- ++(-0.3,0) node[anchor=east]              {$y_1(0)$};
+
+	\path[<->, draw, line width=1.5pt] (15,0) -- (0,0) -- (0,15);
+
+	\node[anchor=base, yshift=-1em] at (14.25,0) {$X$};
+	\node[anchor=east]              at (0,14.25) {$Y$};
+\end{tikzpicture}

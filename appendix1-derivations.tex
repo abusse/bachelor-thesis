@@ -1,0 +1,32 @@
+%!TEX root = bachelor.tex
+
+\chapter{Herleitung \texorpdfstring{$\pi'_2(r)$}{pi2'(r)}}%
+\label{appendix:pi2}
+
+Wie in \cref{sec:div:opt} bereits angemerkt, wird in diesem Anhang die korrekte Lösung für Gleichung~9 in \textcite[\pno~378(6)]{Wagner-2010} hergeleitet:
+
+\begin{align}
+	\dv{r} \pi_2(r) & = \dv{r} \int_0^{x_2(0)} \int_0^{y_2(x)} \phi(x)\,\phi(y)\ \dd y \dd x                                                                                  \label{eqn:appendix:A1} \\[0.8em]
+	                & = \dv{r}{} \int_0^{\flatfrac{d}{r}} \int_0^{y_2(x)} \phi(x)\,\phi(y)\ \dd y \dd x                                                                       \label{eqn:appendix:A2} \\[0.8em]
+	                & = \dv{r} \int_0^{\flatfrac{d}{r}} t(x, r)\ \dd x \quad \text{mit} \quad t(x,r) = \int_0^{y_2(x)} \phi(x)\,\phi(y)\ \dd y                                \label{eqn:appendix:A3} \\[0.8em]
+	                & = \int_0^{\flatfrac{d}{r}} \pdv{r} \left[t(x, r)\right] \dd x - \underbrace{\frac{d \cdot t(\frac{d}{r}, r)}{r^2}}_{=0 \text{, da } y_2(\frac{d}{r})=0} \label{eqn:appendix:A4} \\
+	\nonumber \\
+	\pdv{r} t(x, r) & = \pdv{r} \int_0^{y_2(x)} \phi(x)\,\phi(y)\ \dd y                                                                                                       \label{eqn:appendix:A5} \\[0.8em]
+	                & = \phi(x)\,\phi(y) \cdot \pdv{r} y(x,r)                                                                                                                 \label{eqn:appendix:A6} \\[0.8em]
+	                & = \phi(x)\,\phi(y) \cdot \left[ \frac{d-rx}{(1-r)^2} - \frac{x}{1-r} \right]                                                                            \label{eqn:appendix:A7} \\[0.8em]
+	                & = \phi(x)\,\phi\left(\frac{rx-d}{r-1}\right)  \cdot \frac{d-x}{(r-1)^2}                                                                                 \label{eqn:appendix:A8} \\[0.8em]
+	\nonumber \\
+	\dv{r} \pi_2(r) & = \int_0^{\flatfrac{d}{r}} \frac{d-x}{(r-1)^2} \cdot \phi(x)\,\phi\left(\frac{rx-d}{r-1}\right)\ \dd x                                                  \label{eqn:appendix:A9}
+\end{align}
+
+Das Ausgangsproblem ist in \cref{eqn:appendix:A1} dargestellt. Zunächst wurde der Wert für $x_2(0)$ mit Hilfe von \cref{eqn:div:boarder2} auf \cpageref{eqn:div:boarder2} bestimmt (\cref{eqn:appendix:A2}). Im Anschluss wurde das innere Integral durch die Funktion $t(x,r)$ substituiert (\cref{eqn:appendix:A3}), um die Leibnizregel für Parameterintegrale auf den Term anwenden zu können (\cref{eqn:appendix:A4}).
+
+Ferner gilt es, für die Lösung des Gesamtproblems die partielle Ableitung von $t(x,r)$ nach $r$ zu bestimmen (\cref{eqn:appendix:A5}). Unter erneuter Anwendung der Leibnizregel in Verbindung mit der Kettenregel ergibt sich der Ausdruck in \cref{eqn:appendix:A6}. Dieser lässt sich unter Verwendung von \cref{eqn:div:boarder2} auf \cpageref{eqn:div:boarder2} weiter präzisieren (\cref{eqn:appendix:A7}) und vereinfachen (\cref{eqn:appendix:A8}). Durch das Zusammenfügen von \cref{eqn:appendix:A4} und~\cref{eqn:appendix:A8} ergibt sich das Endergebnis in \cref{eqn:appendix:A9}.
+
+Somit ergibt sich für die Gleichung~10 in \textcite[\pno~378(6)]{Wagner-2010} die Lösung in \cref{eqn:appendix:10} und durch analogen Lösungsweg für die nicht nummerierte Gleichung bei \textcite[\pno~379(7)]{Wagner-2010} die Lösung in \cref{eqn:appendix:11}:
+
+\begin{align}
+	\pi'_2(r_2=\frac{1}{2})                        & = \int_0^{2d} 4(d-x) \cdot \phi(x)\,\phi\left(x-2d\right) \dd x                \label{eqn:appendix:10} \\
+	\pi^{S\prime}(r_1=\frac{1}{2},r_2=\frac{1}{2}) & = \int_0^{d} 4(d-x) \cdot \phi(x)\,\phi\left(x-2d\right) \dd x                 \notag                  \\
+	                                               & \hspace{2cm} + \int_d^{2d} 4(x-2d) \cdot \phi(x)\,\phi\left(2d-x\right) \dd x  \label{eqn:appendix:11}
+\end{align}

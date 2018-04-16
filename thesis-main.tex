@@ -1,0 +1,579 @@
+% use pdf version 1.4
+\pdfoptionpdfminorversion=4
+
+\documentclass[twoside, 12pt, a4paper, ngerman, final]{report}
+
+% Document properties %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pdfinfo{
+	/Author   (Anselm Busse)
+	/Title    (Analyse der Diversifikation im Bankensektor als Ursache systemischer Risiken)
+	/Subject  (Bachelorarbeit)
+	/Keywords (Systemische Risiken, Banken, Diversifikation)
+}
+
+% Included packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{morewrites}					% we will need more than 16 write handles
+\usepackage[utf8]{inputenc}				% use UTF-8 input encoding
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}				% western font encoding, improve hyphenation
+\usepackage{textcomp}
+\usepackage{tipa}						% Text-mode Accents (e.g. \textpolhook{a})
+\usepackage[main=ngerman, english]{babel}% set main language
+\usepackage{ifdraft}					% enable check for draft option
+\usepackage{mathtools}					% display equations
+\usepackage{amssymb}					% math symbols
+\usepackage{wasysym}					% additional symbols
+\usepackage{amsfonts}
+\usepackage{xspace}						% control whitspaces after macros
+\usepackage[hang,bottom]{footmisc}		% footnote modifications
+\usepackage{geometry}					% general page layout
+\usepackage{fancyhdr}
+\usepackage{sectsty}
+\usepackage{graphicx}
+\usepackage{scrextend}					% reference footnotes
+\usepackage[hang,bf,					% hang caption, bf
+            tableposition=top,			% table caption is always above table
+            margin=20pt]{caption}		% indent caption
+\usepackage[listformat=simple,			% subfigure caption
+            list=true]{subcaption}		% list subfigures in table of figures
+\usepackage[titles,subfigure]{tocloft}	% define new 'List of...' and TOC layout
+\usepackage{floatrow}					% enables caption above listing, load before minted
+\usepackage{framed}
+\usepackage[autostyle,
+            english=american,
+            german=guillemets]{csquotes}
+\usepackage{savesym}
+\savesymbol{checkmark}
+\usepackage{mdwlist}
+\usepackage[normalem]{ulem}				% underlinging (e.g. \sout and \uwave)
+\usepackage{extramarks}
+\usepackage{enumitem}					% change the itemize front character
+\usepackage{float}
+\usepackage[]{acronym}					% handle acronyms
+\usepackage{array}						% improved tabular environment
+\usepackage{pgfplots, pgfplotstable}
+\usepackage{xcolor}				        % enable eg color names (load before tikz!!!)
+\usepackage{tikz}			            % lets draw some stuff like a boss
+\usepackage{chngcntr}					% custom counteres used for e.g. time and date calculation
+\usepackage{xspace}						% enable conditional withespace for e.g. a.s.o.
+\usepackage[super]{nth}					% superscript st, nd, rd, th
+\usepackage{wrapfig}					% wrap text around figures
+\usepackage[figuresright]{rotating}		% rotate figures
+\usepackage{textgreek}					% greek letter in text mode \textalpha etc.
+\usepackage{relsize}
+\usepackage[chapter]{algorithm}
+\usepackage[]{algpseudocode}
+\usepackage{multicol}					% introduce multicolumn environment
+\usepackage{multirow}
+\usepackage{tabularx}
+\usepackage{colortbl}
+\usepackage{tcolorbox}					% colored table boxes
+\usepackage{dirtree}					% directory listings
+\usepackage{booktabs}
+\usepackage{xtab}						% tables spanning multiple pages
+\usepackage{threeparttable}				% table with footnotes
+\usepackage{environ}
+\usepackage[nodisplayskipstretch]{setspace}					% allow to set line spacing
+\usepackage{afterpage}					% put text/figure after a certain page
+\usepackage[locale=DE,
+            detect-weight=true,
+            detect-family=true]{siunitx}			% numbers and units
+\usepackage{xpatch}						% allow some bib patching
+\usepackage{fnpct}						% improve footnote reference placing
+\usepackage[nosuper]{glossaries}
+\usepackage{physics}
+\usepackage{ziffer}						% german number seperators
+
+% Improve overall appearance with microtype package %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% read http://www.khirevich.com/latex/microtype/ for further information %%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[activate={true,nocompatibility},	% activate protrusion and expansion
+            final,
+            tracking=true,
+            kerning=true,
+            spacing=true,
+            factor=1100,						% add 10% to the protrusion amount (default is 1000)
+            stretch=10,
+            shrink=10]{microtype}
+
+% PDF setup with links %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[a-1b]{pdfx}
+\hypersetup{final,            %links are only inserted in final mode
+            %pdfpagemode={UseOutlines},
+            bookmarksopen=false,bookmarksopenlevel=0,
+            bookmarksnumbered=true,
+            hypertexnames=false,
+            pdfstartview={FitV},
+            colorlinks=false,linkcolor={black},citecolor={black},urlcolor={black},
+            linktoc=all,
+            breaklinks=true,
+            %pagebackref=true,
+            plainpages=false,
+            pageanchor=true,
+            %backref=page
+            }
+\PassOptionsToPackage{dvipsnames}{xcolor}
+
+\usepackage[capitalise]{cleveref}		% more sophisticated references 
+										%(load after hyperref!)
+
+% Packages specific for draft and debugging %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{showlabels}					% prints LaTex lables in draft mode
+
+% Reduce label size of showlabels package
+\renewcommand{\showlabelfont}{\scriptsize}
+
+% Bibliography setup %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[backend=biber,
+            bibencoding = utf8,
+            natbib = true,
+            style = authoryear-comp,
+            giveninits=true,
+            uniquename=init,
+            maxnames = 12,
+            minnames = 1,
+            maxcitenames=2,
+            backref = false,
+            backrefstyle = two,
+            defernumbers = true,
+            isbn=true,
+            doi=true,
+            dashed=false,
+            %backref=true,			% enable to show refering pages in entry
+            ]{biblatex}
+
+% Bibliography files
+\addbibresource{thesis-main.bib}
+
+\DeclareBibliographyAlias{software}{online}
+
+\DeclareDelimFormat[cbx@textcite]{nameyeardelim}{\addspace}
+
+\DeclareFieldFormat[techreport,report,unpublished]{title}{\mkbibquote{#1}}
+
+\DeclareFieldFormat{edition}{\ifinteger{#1}%
+							 {\mkbibordedition{#1}\addthinspace{}ed.}%
+							 {#1\isdot}
+							}
+
+% redefine strings in Bibliography
+\DefineBibliographyStrings{english}{%
+	urlseen = {Retrieved},  
+	sequens = {f\adddot},			% use f. instead of sq.
+	sequentes = {ff\adddot},		% use ff. instead of sqq.
+}
+
+\renewcommand*{\sqspace}{}			% no space at \psq and \psqq
+
+\assignrefcontextkeyws[labelprefix=S]{software}
+
+% only print isbn or issn if doi is not present
+\DeclareSourcemap{
+	\maps[datatype=bibtex]{
+		\map{
+			\step[fieldsource=doi,final]
+			\step[fieldset=isbn,null]
+		}
+		\map{
+			\step[fieldsource=doi,final]
+			\step[fieldset=issn,null]
+		}
+	}
+}
+
+\DeclareSortingScheme{ymdnt}{
+	\sort{
+		\field{presort}
+	}
+	\sort[final]{
+		\field{sortkey}
+	}
+	\sort[direction=descending]{
+		\field[strside=left,strwidth=4]{sortyear}
+		\field[strside=left,strwidth=4]{year}
+		\literal{9999}
+	}
+	\sort[direction=descending]{
+		\field{month}
+		\literal{9999}
+	}
+	\sort{
+		\field{sortname}
+		\field{author}
+		\field{editor}
+		\field{translator}
+		\field{sorttitle}
+		\field{title}
+	}
+	\sort{
+		\field{sorttitle}
+		\field{title}
+	}
+}
+
+\renewcommand\namelabeldelim{\addnbspace}
+%\renewcommand\multicitedelim{\addcomma\addnbspace}
+\defcounter{abbrvpenalty}{10000}
+
+% Make sure that not overful hboxes are created through URLs
+\setcounter{biburllcpenalty}{7000}
+\setcounter{biburlucpenalty}{8000}
+
+% Page setup via geometry package %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\geometry{a4paper,centering}
+\geometry{hmargin={3cm, 3cm},vmargin={3cm,3cm}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Calculation of current time based on counter \time (minutes since midnight)
+% Usage: \now
+\newcount\myhours
+\newcount\myminutes
+\myhours   = \time \divide \myhours by 60
+\myminutes = \time \multiply \myhours by 60 \advance \myminutes by -\myhours
+             \divide \myhours by 60
+\def\now{\ifnum\myhours<10{}0\fi\number\myhours:\ifnum\myminutes<10{}0\fi\number\myminutes}
+
+% Adds a <line> to the Table of Contents (TOC)
+% Usage: \addtotoc{<line>}
+\newcommand{\addtotoc}[1]{
+  \ifnum0=\csname c@section\endcsname
+    \def\myLevel{section}
+    \def\myEntry{#1}
+  \else
+    \ifnum0=\csname c@subsection\endcsname
+      \def\myLevel{section}
+      \def\myEntry{\protect\numberline{}{#1}}
+    \else
+      \def\myLevel{subsection}
+      \def\myEntry{\protect\numberline{}{#1}}
+    \fi
+  \fi
+  \addcontentsline{toc}{\myLevel}{\myEntry}
+}
+
+% Defines a TODO <aspect> that is only visible in draft mode
+% Usage: \TODO{<aspect>} simply adds a blue todo to the text
+%        \TODO[<description>]{<aspect>} also adds <description> to the TOC
+\ifdraft{
+	\newcommand{\TODO}[2][@]{
+		{\textcolor{blue}{[TODO: #2]}}
+		\ifx#1@
+		\else
+      		\addtotoc{\textcolor{blue}{TODO: #1}}
+    	\fi
+  	}
+	\newcommand{\QUEST}[2][@]{
+		{\textcolor{red}{[Question: #2]}}
+		\ifx#1@
+		\else
+      		\addtotoc{\textcolor{red}{Question: #1}}
+    	\fi
+  	}
+}{
+	\newcommand{\TODO}[2][@]{}
+	\newcommand{\QUEST}[2][@]{}
+}
+
+\newcommand{\TR}{\ref{TODO}\TODO{Missing Reference}\@\xspace\PackageWarning{TODO}{Missing Reference}}
+\newcommand{\TC}{\cite{TODO}\TODO{Missing Citation}\@\xspace\PackageWarning{TODO}{Missing Citation}}
+
+% Underlines <passage>s that should be checked later (visible in draft mode)
+% Usage \CHECK{<passage>}
+\ifdraft{
+  \newcommand{\CHECK}[1]{\uwave{#1}}
+}{
+  \newcommand{\CHECK}[1]{#1}
+}
+
+% Alternative to commenting out <paragraphs>
+% Usage: \FORGET{<paragraphs>}
+\ifdraft{
+  \newcommand{\FORGET}[1]{\sout{#1}}
+}{
+  \newcommand{\FORGET}[1]{}
+}
+
+\newcommand*{\eg}{e.g.\@\xspace}
+\newcommand*{\ie}{i.e.\@\xspace}
+\newcommand*{\cf}{cf.\xspace}
+\newcommand*{\etal}{et\ al.\@\xspace}
+
+\newcommand*{\zb}{z.B.\@\xspace}
+\newcommand*{\vgl}{vgl.\@\xspace}
+\newcommand*{\bzw}{bzw.\@\xspace}
+\newcommand*{\ua}{u.a.\@\xspace}
+
+\newcommand{\rpm}{\sbox0{$1$}\sbox2{$\scriptstyle\pm$}
+  \raise\dimexpr(\ht0-\ht2)/2\relax\box2 }
+
+\renewcommand{\l}[1]{l\adddot~#1}
+\renewcommand{\ll}[1]{ll\adddot~#1}
+
+\newcommand*{\elide}{\textup{[\,\dots]}\@\xspace}
+
+\newcommand{\breakL}[1]{\begin{tabular}{l}#1\end{tabular}}
+\newcommand{\breakC}[1]{\begin{tabular}{c}#1\end{tabular}}
+\newcommand{\breakR}[1]{\begin{tabular}{r}#1\end{tabular}}
+
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+\newcommand{\Lim}[1]{\raisebox{0.5ex}{\scalebox{0.8}{$\displaystyle \lim_{#1}\;$}}}
+
+% Just load the \drsh character from mathabx as it is as a whole incompatible with ams
+\DeclareFontFamily{U}{mathb}{\hyphenchar\font45}
+\DeclareFontShape{U}{mathb}{m}{n}{
+      <5> <6> <7> <8> <9> <10> gen * mathb
+      <10.95> mathb10 <12> <14.4> <17.28> <20.74> <24.88> mathb12
+      }{}
+\DeclareSymbolFont{mathb}{U}{mathb}{m}{n}
+\DeclareMathSymbol{\drsh}                  {3}{mathb}{"EB}
+
+% Fonts %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Set fonts for headlines, tables, and listings
+\allsectionsfont{\bfseries}
+\sisetup{math-micro=\text{\textmugreek},
+		 text-micro=\textmugreek,
+		 exponent-product=\cdot,
+		 output-product=\cdot}
+
+% Page Layout %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Standard header and footer
+\setlength{\headheight}{14.6pt}
+\renewcommand{\headrulewidth}{0pt}
+
+\fancypagestyle{frontmatter}{
+	\fancyhf{}
+	\fancyheadoffset[OR,EL]{2.4cm}
+	\fancyhead[OR]{\textsc{\nouppercase{\leftmark}}\quad\smash{\rule[-.2ex]{1pt}{4cm}}\quad\makebox[\widthof{0000000}][l]{\thepage}}
+	\fancyhead[EL]{\makebox[\widthof{0000000}][r]{\thepage}\quad\smash{\rule[-.2ex]{1pt}{4cm}}\quad\textsc{\nouppercase{\leftmark}}}
+}
+
+
+\fancypagestyle{mainmatter}{
+	\fancyhf{}
+	\fancyheadoffset[OR,EL]{2.4cm}
+	\fancyhead[OR]{\textsc{\nouppercase{\rightmark}}\quad\smash{\rule[-.2ex]{1pt}{4cm}}\quad\makebox[\widthof{0000000}][l]{\thepage}}
+	\fancyhead[EL]{\makebox[\widthof{0000000}][r]{\thepage}\quad\smash{\rule[-.2ex]{1pt}{4cm}}\quad\textsc{\nouppercase{\leftmark}}}
+}
+
+\fancypagestyle{backmatter}{
+	\fancyhf{}
+	\fancyheadoffset[OR,EL]{2.4cm}
+	\fancyhead[OR]{\textsc{\nouppercase{\rightmark}}\quad\smash{\rule[-.2ex]{1pt}{4cm}}\quad\makebox[\widthof{0000000}][l]{\thepage}}
+	\fancyhead[EL]{\makebox[\widthof{0000000}][r]{\thepage}\quad\smash{\rule[-.2ex]{1pt}{4cm}}\quad\textsc{\nouppercase{\leftmark}}}
+}
+
+% header and footer on other pages
+\fancypagestyle{plain}{
+	\fancyhead{}
+	\fancyfoot[CE,CO]{\sffamily\thepage}
+	\ifdraft{
+		\fancyfoot[C]{\today, \now}
+		\fancyfoot[R]{\sffamily\thepage}
+	}{
+		\fancyfoot[C]{}
+		\fancyfoot[R]{\thepage}
+	}
+}
+
+% Paragraphs and footnotes
+\setlength\parskip{\medskipamount}
+\setlength\parindent{0pt}
+\setlength\footnotemargin{0.8em}
+\setlength{\headheight}{15pt} 
+
+% Chapter layout
+
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+	{\normalfont\Large\raggedleft}% format
+	{\raggedleft\MakeUppercase{\chaptertitlename~\thechapter}}  % label
+	{0ex} % sep
+	{\Huge\bfseries} % before-code
+	[\vspace{-3ex}%
+	 \rule{\textwidth}{0.3pt}
+	] % after-code
+\titleformat{name=\chapter,numberless}[display]
+	{\normalfont\Large\raggedleft}% format
+	{}  % label
+	{-3ex} % sep
+	{\Huge\bfseries} % before-code
+	[\vspace{-2ex}%
+	 \rule{\textwidth}{0.3pt}
+	] % after-code
+
+\titleformat*{\section}{\Large\bfseries}
+\titleformat*{\subsection}{\large\bfseries}
+\titleformat*{\subsubsection}{\large\bfseries}
+\titleformat*{\paragraph}{\large\bfseries}
+\titleformat*{\subparagraph}{\large\bfseries}
+
+\titlespacing*{\chapter}{0pt}{-3em}{0pt}
+\titlespacing{\section}{0pt}{5pt}{5pt}
+\titlespacing{\subsection}{0pt}{5pt}{5pt}
+\titlespacing{\subsubsection}{0pt}{5pt}{5pt}
+\titlespacing{\paragraph}{0pt}{5pt}{5pt}
+
+% The subfigure option of the tocloft package needs the 'lofdepth' & 'lotdepth'
+% counter. Normally its define by the subfigure or subfig package, but as we use
+% subcaption we have to define it on our own
+\newcounter{lofdepth}
+\setcounter{lofdepth}{2}
+\newcounter{lotdepth}
+\setcounter{lotdepth}{2}
+
+% Document specific commands and abbreviations %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\floatsetup[listing]{style=plaintop}
+\floatstyle{plaintop}
+\restylefloat{table}
+
+\makeatletter 
+\def\mod@estimate@lineht{% 
+  \ST@lineht=\arraystretch \baslineskp 
+  %\global\advance\ST@lineht by 1\p@ 
+  \ST@stretchht\ST@lineht\advance\ST@stretchht-\baslineskp 
+  \ifdim\ST@stretchht<\z@\ST@stretchht\z@\fi 
+  \ST@trace\tw@{Average line height: \the\ST@lineht}% 
+  \ST@trace\tw@{Stretched line height: \the\ST@stretchht}% 
+} 
+\newenvironment{strictsupertabular} 
+  {\let\estimate@lineht\mod@estimate@lineht\supertabular} 
+  {\endsupertabular} 
+\makeatother
+
+% Change the itemize symbols
+
+\def\labelitemi{\normalfont \bfseries \textendash}
+\def\labelitemii{\textasteriskcentered}
+
+% correct spacing
+
+\BeforeBeginEnvironment{align}{\begin{singlespace}\vspace*{-\baselineskip}}
+\AfterEndEnvironment{align}{\end{singlespace}\noindent\ignorespaces}
+\BeforeBeginEnvironment{align*}{\begin{singlespace}\vspace*{-\baselineskip}}
+\AfterEndEnvironment{align*}{\end{singlespace}\noindent\ignorespaces}
+\BeforeBeginEnvironment{gather}{\begin{singlespace}\vspace*{-\baselineskip}}
+\AfterEndEnvironment{gather}{\end{singlespace}\noindent\ignorespaces}
+\BeforeBeginEnvironment{figure}{\begin{singlespace}\vspace*{-\baselineskip}}
+\AfterEndEnvironment{figure}{\end{singlespace}\noindent\ignorespaces}
+
+\AdaptNoteOpt\footcite\multfootcite
+\setfnpct{after-punct-space=-0.12em}
+
+\setstretch{1.5}
+
+% don't footnote numbers with 1 every chapter %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\counterwithout{footnote}{chapter}
+
+% TikZ setup %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usetikzlibrary{arrows,arrows.meta,bending}
+
+\tikzset{
+    %Define standard arrow tip
+    >=stealth',
+}
+
+\definecolor{normal}{RGB}{203,255,181}		
+\definecolor{individual}{RGB}{253,249,192}	
+\definecolor{system}{RGB}{255,130,130}
+\definecolor{error}{RGB}{173,220,236}
+
+\definecolor{graph1}{rgb}{0.106,0.620,0.467}
+\definecolor{graph2}{rgb}{0.851,0.373,0.008}
+\definecolor{graph3}{rgb}{0.459,0.439,0.702}
+
+\newcommand{\includetikz}[1]{\input{#1.tikz}}
+
+% Use a recent version for tikz and pgf plotting
+\pgfplotsset{compat=1.14}
+
+\input{preface0-glossary}
+
+\begin{document}
+
+% Preface %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand{\thepage}{\roman{page}}
+
+\microtypesetup{protrusion=true}
+
+\include{preface1-titlepage}    \cleardoublepage{}
+\include{preface2-affirmation}  \cleardoublepage{}
+\include{preface3-abstract}     \cleardoublepage{}
+
+% Table of contents, list of figures, etc. %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\microtypesetup{protrusion=false}
+
+\begingroup \singlespacing{}
+	\tableofcontents \cleardoublepage{}
+
+	\phantomsection
+	\addcontentsline{toc}{chapter}{\listfigurename}
+	\listoffigures
+	\vspace{2.5cm}
+	\begingroup
+		\let\clearpage\relax
+		\phantomsection
+		\addcontentsline{toc}{chapter}{\listtablename}
+		\listoftables
+	\endgroup \cleardoublepage{}
+	
+	\printglossary[title={Symbolverzeichnis}, style=listdotted]
+	\glsaddall{}
+	\addcontentsline{toc}{chapter}{Symbolverzeichnis} \cleardoublepage{}
+\endgroup
+
+% Content %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setcounter{page}{1}
+\renewcommand{\thepage}{\arabic{page}}
+\pagestyle{mainmatter}
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter\ #1}{\thechapter\ #1}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+
+\microtypesetup{protrusion=true}
+
+\include{chapter1-introduction}            \cleardoublepage{}
+\include{chapter2-model}                   \cleardoublepage{}
+\include{chapter3-diversification}         \cleardoublepage{}
+\include{chapter4-advanced-model}          \cleardoublepage{}
+\include{chapter5-investment-distribution} \cleardoublepage{}
+\include{chapter6-conclusion}              \cleardoublepage{}
+
+\appendix
+\renewcommand{\chaptername}{Appendix}
+\include{appendix1-derivations}            \cleardoublepage{}
+\include{appendix2-mathematica}            \cleardoublepage{}
+
+% References %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter\ #1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+
+\printbibliography[title=Literaturverzeichnis,heading=bibintoc] \cleardoublepage{}
+\newpage\null\thispagestyle{empty}\newpage
+
+\end{document}

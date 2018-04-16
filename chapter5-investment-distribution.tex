@@ -1,0 +1,189 @@
+%!TEX root = bachelor.tex
+
+\chapter{Verteilungen der Investmentwerte}%
+\label{chap:other}
+
+Da die von \citeauthor{Wagner-2010} genutzte Gleichverteilung eine sehr einfache Annahme für die Verteilung die Realisation der Investitionen ist, sollen in diesem Kapitel weitere Verteilungsmöglichkeiten untersucht werden. Auf Grund der ansonsten notwendigen umfangreichen Fallunterscheidung, wie sie im vorangegangenen Kapitel gezeigt wurde, soll in diesem Kapitel nur der Fall $d\!<\!r_i \cdot s$ untersucht werden. Im ersten Abschnitt dieses Kapitels soll hierfür zunächst die Problematik abschnittsweise definierter Verteilungen diskutiert werden. Im zweiten Abschnitt werden sodann komplexere Verteilungen in \citeauthor{Wagner-2010}s Modell thematisiert.
+
+\section{Abschnittsweise Verteilungen}%
+\label{sec:other:piece_wise}
+
+Das vorangegangene Kapitel hat bereits gezeigt, dass \citeauthor{Wagner-2010}s Modell bei der konkreten Bestimmung des optimalen Diversifikationsgrades eine Fallunterscheidung erfordert. Diese Fallunterscheidung ist jedoch immer noch nicht ausreichend, falls die Funktion~$\phi$ eine abschnittsweise definierte Verteilungsfunktion, wie \zb{} die Dreiecksverteilung, die Bates-Verteilung oder die Irwin-Hall-Verteilung ist. Dieser Abschnitt soll die Problematik bezüglich solcher Verteilungen lediglich verdeutlichen und keine konkret Lösungen finden, da dies den Umfang dieser Arbeit ansonsten nicht gerecht würde.
+
+Die Problematik soll am einer einfachen symmetrischen Dreiecksverteilung $\phi_\wedge(\cdot)$ mit Modus bei $\flatfrac{s}{2}$ verdeutlicht werden bezüglich der Bestimmung von $\pi_2(r_2)$. Die Verteilungsfunktion sei dabei wie folgt gegeben:
+
+\begin{equation}
+	\phi_\wedge(x) = \begin{dcases}
+		\frac{4}{s^2}x               & \text{für } 0 \leq x \leq \frac{s}{2} \\
+		\frac{4}{s} - \frac{4}{s^2}x & \text{für } \frac{s}{2} < x \leq s    \\
+		0                            & \text{sonst}
+	\end{dcases} \label{eqn:def:triangular_distribution}
+\end{equation}
+
+\begin{figure}[t!]
+	\centering
+	\begin{subfigure}[b]{0.49\textwidth}\centering
+		\resizebox{\textwidth}{!}{
+			\includetikz{figures/divers-triangular1}
+		}
+		\caption[Der Fall $\displaystyle x_2(0) < \flatfrac{s}{2}$.]{$\displaystyle x_2(0) < \flatfrac{s}{2}$}%
+		\label{fig:divers-triangular:1}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.49\textwidth}\centering
+		\resizebox{\textwidth}{!}{
+			\includetikz{figures/divers-triangular2}
+		}
+		\caption[Der Fall $\displaystyle x_2(0) = \flatfrac{s}{2}$.]{$\displaystyle x_2(0) = \flatfrac{s}{2}$}%
+		\label{fig:divers-triangular:2}
+	\end{subfigure}\vspace{0.5cm}
+	\begin{subfigure}[b]{0.49\textwidth}\centering
+		\resizebox{\textwidth}{!}{
+			\includetikz{figures/divers-triangular3}
+		}
+		\caption[Der Fall $\displaystyle x_2(0) > \flatfrac{s}{2} \wedge y_2(0) < \flatfrac{s}{2}$.]{$\displaystyle x_2(0) > \flatfrac{s}{2} \wedge y_2(0) < \flatfrac{s}{2}$}%
+		\label{fig:divers-triangular:3}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.49\textwidth}\centering
+		\resizebox{\textwidth}{!}{
+			\includetikz{figures/divers-triangular4}
+		}
+		\caption[Der Fall $\displaystyle x_2(0) > \flatfrac{s}{2} \wedge y_2(0) \geq \flatfrac{s}{2}$.]{$\displaystyle x_2(0) > \flatfrac{s}{2} \wedge y_2(0) \geq \flatfrac{s}{2}$}%
+		\label{fig:divers-triangular:4}
+	\end{subfigure}
+	\caption[Illustration des Bankensektors mit einer Dreiecksverteilung unter der Annahme $d <r_i \cdot s$ und Unterscheidung der vier möglichen Fälle.]{Illustration des Bankensektors mit einer Dreiecksverteilung unter der Annahme $d <r_i \cdot s$ und Unterscheidung der vier möglichen Fälle.\vspace{-0.5cm}}%
+	\label{fig:divers-triangular}
+\end{figure}
+
+\begin{sidewaysfigure}%
+\parbox{\textheight}{%
+\begin{align}
+	\pi_2(r_2) & = \int_0^{x_2(0)} \int_0^{y_2(x)} \phi_\wedge(x)\,\phi_\wedge(y)\ \dd y\, \dd x \label{eqn:triangular1}	\\[2em]
+	\pi_2(r_2) & = \begin{dcases}
+	                   \int_0^{x_2(0)} \int_0^{y_2(x)} \frac{4}{s^2}x \cdot \frac{4}{s^2}y\ \dd y\, \dd x & \text{für } x_2(0) < \flatfrac{s}{2} \Leftrightarrow d < \frac{s \cdot r_2}{2}\\
+	                   \int_0^{\flatfrac{s}{2}} \int_0^{y_2(x)} \frac{4}{s^2}x \cdot \phi_\wedge(y)\ \dd y\, \dd x + \int_{\flatfrac{s}{2}}^{x_2(0)} \int_0^{y_2(x)} \left(\frac{4}{s} - \frac{4}{s^2}x\right)\cdot \phi_\wedge(y)\ \dd y\, \dd x & \text{sonst}
+	               \end{dcases} \label{eqn:triangular2} \\[2em]
+	\pi_2(r_2) & = \begin{dcases}
+	                   \int_0^{x_2(0)} \int_0^{y_2(x)} \frac{4}{s^2}x \cdot \frac{4}{s^2}y\ \dd y\, \dd x & \text{für } x_2(0) < \flatfrac{s}{2} \Leftrightarrow d < \frac{s \cdot r_2}{2}\\
+	                   \int_0^{\flatfrac{s}{2}} \int_0^{y_2(x)} \frac{4}{s^2}x \cdot \frac{4}{s^2}y\ \dd y\, \dd x & \text{für } x_2(0) = \flatfrac{s}{2} \Leftrightarrow d = \frac{s \cdot r_2}{2}\\
+	                   \int_0^{\flatfrac{s}{2}} \int_0^{y_2(x)} \frac{4}{s^2}x \cdot \phi_\wedge(y)\ \dd y\, \dd x + \int_{\flatfrac{s}{2}}^{x_2(0)} \int_0^{y_2(x)} \left(\frac{4}{s} - \frac{4}{s^2}x\right)\cdot \phi_\wedge(y)\ \dd y\, \dd x & \text{sonst}
+	               \end{dcases} \label{eqn:triangular3} \\[2em]
+	\pi_2(r_2) & = \left\{%
+	                   \begin{aligned}
+	                       & \int_0^{x_2(0)} \int_0^{y_2(x)} \frac{4}{s^2}x \cdot \frac{4}{s^2}y\ \dd y\, \dd x && \text{für } x_2(0) < \flatfrac{s}{2} \Leftrightarrow d < \frac{s \cdot r_2}{2}\\
+	                       & \int_0^{\flatfrac{s}{2}} \int_0^{y_2(x)} \frac{4}{s^2}x \cdot \frac{4}{s^2}y\ \dd y\, \dd x && \text{für } x_2(0) = \flatfrac{s}{2} \Leftrightarrow d = \frac{s \cdot r_2}{2}\\
+	                       & \int_{0}^{\flatfrac{s}{2}} \int_0^{y_2(x)} \frac{4}{s^2}x \cdot \frac{4}{s^2}y \ \dd y\, \dd x 	+ \int_{\flatfrac{s}{2}}^{x_2(0)} \int_0^{y_2(x)} \left(\frac{4}{s} - \frac{4}{s^2}x\right)\cdot \frac{4}{s^2}y \ \dd y\, \dd x && \text{für \breakC{$x_2(0) > \flatfrac{s}{2} \wedge y_2(0) < \flatfrac{s}{2}$\\$ \Leftrightarrow d > \frac{s \cdot r_2}{2} \wedge d < \frac{s (1-r_2)}{2}$}} \\
+	                       & \int_0^{x_2(\flatfrac{s}{2})} \left( \int_0^{\flatfrac{s}{2}} \frac{4}{s^2}x \cdot \frac{4}{s^2}y \ \dd y + \int_{\flatfrac{s}{2}}^{y_2(x)} \frac{4}{s^2}x \cdot \left( \frac{4}{s} - \frac{4}{s^2}y \right) \dd y\right) \dd x 	\\ & 
+	                       \qquad+ \int_{x_2(\flatfrac{s}{2})}^{\flatfrac{s}{2}} \int_0^{y_2(x)} \frac{4}{s^2}x \cdot \frac{4}{s^2}y \ \dd y\, \dd x + \int_{\flatfrac{s}{2}}^{x_2(0)} \int_0^{y_2(x)} \left(\frac{4}{s} - \frac{4}{s^2}x\right)\cdot \frac{4}{s^2}y \ \dd y\, \dd x && \text{sonst}
+	                   \end{aligned}%
+	               \right. \label{eqn:triangular4}
+\end{align}}
+\end{sidewaysfigure}
+
+Das Model ist zusammen mit dieser Verteilung in \cref{fig:divers-triangular} dargestellt unter der Annahme, dass $d\!<\!r_i \cdot s$ gilt. Auf Grund der Änderung des Verhaltens von $\phi_\wedge$ an der Stelle $\flatfrac{s}{2}$ sind mehrere Fälle zu unterscheiden, die in den \cref{fig:divers-triangular:1,fig:divers-triangular:2,fig:divers-triangular:3,fig:divers-triangular:4} dargestellt sind. Diese Fallunterscheidung erhöht die Komplexität bei der Bestimmung des optimalen Diversifikationsgrades. Dies soll im Folgenden an der Bestimmung von $\pi_2$ beispielhaft gezeigt werden. Aus der allgemeinen Formel zur Bestimmung von $\pi_2$ (\cref{eqn:triangular1}) lässt sich zunächst die Funktion für den Fall bestimmen, dass $\displaystyle x_1(0)\!<\!\flatfrac{s}{2}$ gilt (\cref{fig:divers-triangular:1} und \cref{eqn:triangular2}). Ferner lässt sich der Ausdruck für Sonderfall $\displaystyle x_1(0)\!=\!\flatfrac{s}{2}$ bestimmen (\cref{fig:divers-triangular:2} und \cref{eqn:triangular3}). Für den Fall, dass $d\!>\!\displaystyle\flatfrac{(r_i \cdot s)}{2}$ gilt, ist auf Grund der Änderung des Verhaltens von  $\phi_\wedge$ an der Stelle $\flatfrac{s}{2}$ ein Aufteilen der Integrale nötig. Für den Fall $y_2(0)\!<\!\flatfrac{s}{2}$ ist nur das Aufteilen des Integrals über $\phi_\wedge(x)$ notwendig (\cref{fig:divers-triangular:3} und \cref{eqn:triangular4}). Im Fall $y_2(0)\!\geq\!\flatfrac{s}{2}$ ist zusätzlich das Aufteilen des Integrals über $\phi_\wedge(y)$ notwendig (\cref{fig:divers-triangular:4} und \cref{eqn:triangular4}).\footnote{Auf die Darstellung der Lösungen der Integrale wird aus Platzgründen und, da sie für die Argumentation in diesem Abschnitt nicht notwendig sind, verzichtet.}
+
+Die Bestimmung von $\pi^S$ und die des optimalen Diversifikationsgrades würden weitere umfangreichere Fallunterscheidungen erfordern. Die notwendigen Fallunterscheidungen erschweren die Analyse eines Bankensektors massiv. Ferner wird diese Bestimmung um so komplizierter, je mehr Änderungsstellen des Funktionsverhaltens existieren, wie \zb{} bei Bates-Verteilungen höheren Grades. Somit erscheint es als unpraktikabel, mit dem von \citeauthor{Wagner-2010} präsentieren Model den Bankensektor eines Marktes zu untersuchen, bei dem die Erträge von Investments nicht durch eine kontinuierlich definierte Verteilung modelliert werden können.
+
+\section{Numerische Bestimmung}%
+\label{sec:other:numeric}
+
+Die von \citeauthor{Wagner-2010} genutzte Gleichverteilung für die Werte der Investments stellt eine sehr starke Vereinfachung der Realität dar. Es ist anzunehmen, dass in der Realität ein oder einige wenige Realisationen wahrscheinlicher sind als andere und darüber lediglich ein gewisses Maß an Ungewissheit herrscht. Somit wäre eine uni-modale Verteilung eine bessere Beschreibung der Realität. Grundsätzlich denkbar wären jedoch auch bi- oder multi-modale Verteilungen, falls es \zb{} eine Reihe von erwartbaren Realisationen gibt. Aus diesem Grund soll in diesem Abschnitt \citeauthor{Wagner-2010}s Model auf uni-modale Verteilungen angewandt werden. Auf Grund der Tatsache, das die Wahrscheinlichkeitsdichtefunktionen komplexerer Verteilungen oft nur schwer oder gar nicht geschlossen berechnet werden können, soll die Betrachtung anhand der nummerischen Bestimmung einiger ausgewählter Beispielfälle erfolgen. Dabei soll in erster Linie ergründet werden, ob \citeauthor{Wagner-2010}s grundsätzliche Erkenntnisse auch für komplexere Funktionen zutreffen.
+
+Für die numerische Bestimmung der optimalen Diversifikationsgrade wurde Mathematica\footcite{mathematica} genutzt. Das, zur Bestimmung erstellte, Mathematica-Modell ist in \cref{appendix:mathematica} detailliert dargestellt und erläutert. Bei der Auswahl der Wahrscheinlichkeitsfunktionen als alternative zur Gleichverteilung wurden abschnittsweise definierte Funktionen auf Grund der Erkenntnisse des vorangegangenen Abschnittes außen vor gelassen. Als erste Verteilungsfunktion soll zunächst die Beta-Verteilung betrachtet werden. Diese Verteilungsfunktion besitzt zwei positive Parameter \textalpha{} und \textbeta{}, welche die Form der Funktion bestimmen. Für das Parameterpaar \textalpha{} und \textbeta{} gleich eins ergibt sich die von \citeauthor{Wagner-2010} betrachtete Gleichverteilung. Auf Grund dieser Tatsache konnte die Korrektheit des erstellten Mathematica-Modells bezüglich der numerischen Berechnungen durch Vergleich der Ergebnisse verifiziert werden. Da die Beta-Verteilung nur auf dem Intervall $[0,1]$ definiert ist, wurde sie bei der Berechnung linear auf das Intervall $[0,s]$ skaliert. Weiterhin soll die Kumaraswamy-Verteilung betrachtet werden, welche der Beta-Verteilung sehr ähnlich ist und entsprechend auch zwei Formparameter besitzt, jedoch schneller zu berechnen ist. Die Parameter der beiden Verteilungsfunktionen wurden so gewählt, dass der Modus der Verteilung jeweils bei $\flatfrac{s}{2}$ \bzw{} jeweils einmal links und einmal rechts davon liegt. Ferner wurde für alle Berechnungen $d\!=\!\flatfrac{1}{3}$ angenommen. Die Ergebnisse der numerischen Bestimmung für die Beta- und Kumaraswamy-Verteilung sind in \cref{tbl:numeric:beta} zusammengefasst.
+
+Neben der Beta- und Kumaraswamy-Verteilung soll eine abgeschnittene Normalverteilung betrachtet werden. Der Schnitt findet dabei links und rechts des Intervalls $[0,s]$ statt. Die Normalverteilung wurde hierbei gewählt, da sie eine der realistischsten Modellierungen bezüglich der möglichen Werte der Investments darstellen dürfte. Somit trägt die Anwendung dieser Verteilung im Modell erheblich zur Argumentation bei, dass damit auch reale Märkte modelliert werden können. Erneut wurden die Parameter der Verteilungsfunktion so gewählt, dass der Modus der Verteilung bei $\flatfrac{s}{2}$ \bzw{} jeweils einmal links und einmal rechts davon liegt und $d\!=\!\flatfrac{1}{3}$ ist. Darüber hinaus wurden die optimalen Diversifikationsgrade für zwei verschiedene Varianzen bestimmt, um die Einfluss der Wahrscheinlichkeitskonzentration zu analysieren. Die Ergebnisse für die Normalverteilung sind in \cref{tbl:numeric:normal} zusammengefasst.
+
+\begin{sidewaystable}[!p]\sisetup{round-mode=places,round-precision=4,table-format=1.4,table-number-alignment=center,table-text-alignment=center}\footnotesize
+	\caption{Optimale Diversifikationsgrade für $d\!=\!\flatfrac{1}{3}$ und ausgewählte Werte für $q$ und $s$ bezüglich einer Beta- und Kumaraswamy-Verteilung.}%
+	\label{tbl:numeric:beta}
+	\begin{tabular}{>{\bfseries}c>{\bfseries}cSSSSSSSSSSSSSS}\toprule
+		\multicolumn{2}{c}{\multirow{2}{*}{\raisebox{-9pt}{\breakC{Modell-\\Parameter}}}} & \multicolumn{8}{c}{Beta-Verteilung} & \multicolumn{6}{c}{Kumaraswamy-Verteilung} \\ \cmidrule(lr){3-10} \cmidrule(lr){11-16}
+		&		& \multicolumn{2}{c}{$\alpha=1$, $\beta=1$}		& \multicolumn{2}{c}{$\alpha=2$, $\beta=4$}		& \multicolumn{2}{c}{$\alpha=2$, $\beta=2$}		& \multicolumn{2}{c}{$\alpha=4$, $\beta=2$}	& \multicolumn{2}{c}{$\alpha=2$, $\beta=4$}		& \multicolumn{2}{c}{$\alpha=2$, $\beta=2$}		& \multicolumn{2}{c}{$\alpha=4$, $\beta=2$}	\\ \cmidrule(lr){1-2} \cmidrule(lr){3-4} \cmidrule(lr){5-6} \cmidrule(lr){7-8} \cmidrule(lr){9-10} \cmidrule(lr){11-12} \cmidrule(lr){13-14} \cmidrule(lr){15-16}
+		$q$  & $s$ & {$r^\ast$} & {$r^E$}  & {$r^\ast$} & {$r^E$}  & {$r^\ast$} & {$r^E$}  & {$r^\ast$} & {$r^E$}  & {$r^\ast$} & {$r^E$}  & {$r^\ast$} & {$r^E$}  & {$r^\ast$} & {$r^E$}  \\ \midrule
+		1,05 & 5   & 0.488088   & 0.493902 & 0.490184   & 0.494974 & 0.49079    & 0.495285 & 0.493375   & 0.496609 & 0.490902   & 0.495342 & 0.491012   & 0.495398 & 0.493485   & 0.496665 \\
+		1,1  & 5   & 0.477226   & 0.488088 & 0.481228   & 0.490184 & 0.482387   & 0.49079  & 0.48733    & 0.493375 & 0.482602   & 0.490902 & 0.482812   & 0.491012 & 0.487539   & 0.493485 \\
+		1,5  & 5   & 0.414214   & 0.44949  & 0.429022   & 0.458319 & 0.43342    & 0.460895 & 0.452015   & 0.471855 & 0.434223   & 0.461372 & 0.435026   & 0.461839 & 0.452807   & 0.47232  \\
+		2    & 5   & 0.366025   & 0.414214 & 0.388488   & 0.429022 & 0.395437   & 0.43342  & 0.424407   & 0.452015 & 0.396667   & 0.434223 & 0.397956   & 0.435026 & 0.425657   & 0.452807 \\
+		2,5  & 5   & 0.333333   & 0.387426 & 0.360477   & 0.406581 & 0.369224   & 0.412386 & 0.405175   & 0.436758 & 0.370723   & 0.41343  & 0.372371   & 0.414498 & 0.406745   & 0.437804 \\
+		3    & 5   & 0.309017   & 0.366025 & 0.339278   & 0.388488 & 0.349411   & 0.395437 & 0.39051    & 0.424407 & 0.351093   & 0.396667 & 0.353031   & 0.397956 & 0.392326   & 0.425657 \\
+		4    & 5   & 0.274292   & 0.333333 & 0.308308   & 0.360477 & 0.320523   & 0.369224 & 0.368884   & 0.405175 & 0.322433   & 0.370723 & 0.32483    & 0.372371 & 0.371062   & 0.406745 \\
+		6    & 5   & 0.231662   & 0.289898 & 0.268805   & 0.32234  & 0.283816   & 0.333602 & 0.340881   & 0.378715 & 0.28592    & 0.335416 & 0.28899    & 0.337599 & 0.343534   & 0.380728 \\
+		8    & 5   & 0.205213   & 0.261204 & 0.243189   & 0.296378 & 0.26014    & 0.309417 & 0.322435   & 0.36048  & 0.262289   & 0.311399 & 0.265869   & 0.313988 & 0.325404   & 0.3628   \\
+		10   & 5   & 0.186605   & 0.240253 & 0.224502   & 0.276924 & 0.24296    & 0.291344 & 0.308825   & 0.346679 & 0.245088   & 0.293419 & 0.249089   & 0.296341 & 0.312029   & 0.349233 \\ \bottomrule
+	\end{tabular}
+
+	\bigskip\bigskip  % provide some separation between the two tables
+
+	\begin{threeparttable}
+		\begin{tabular}{>{\bfseries}c>{\bfseries}cSSSSSSSSSSSSSS}\toprule
+			\multicolumn{2}{c}{\multirow{2}{*}{\raisebox{-9pt}{\breakC{Modell-\\Parameter}}}} & \multicolumn{8}{c}{Beta-Verteilung} & \multicolumn{6}{c}{Kumaraswamy-Verteilung} \\ \cmidrule(lr){3-10} \cmidrule(lr){11-16}
+			&		& \multicolumn{2}{c}{$\alpha=1$, $\beta=1$}		& \multicolumn{2}{c}{$\alpha=2$, $\beta=4$}		& \multicolumn{2}{c}{$\alpha=2$, $\beta=2$}		& \multicolumn{2}{c}{$\alpha=4$, $\beta=2$}	& \multicolumn{2}{c}{$\alpha=2$	, $\beta=4$}		& \multicolumn{2}{c}{$\alpha=2$, $\beta=2$}		& \multicolumn{2}{c}{$\alpha=4$, $\beta=2$}	\\ \cmidrule(lr){1-2} \cmidrule(lr){3-4} \cmidrule(lr){5-6} \cmidrule(lr){7-8} \cmidrule(lr){9-10} \cmidrule(lr){11-12}	 \cmidrule(lr){13-14} \cmidrule(lr){15-16}
+			$q$ & $s$  & {$r^\ast$} & {$r^E$}  & {$r^\ast$}               & {$r^E$}                     & {$r^\ast$} & {$r^E$}  & {$r^\ast$} & {$r^E$}  & {$r^\ast$}               & {$r^E$}  & {$r^\ast$} & {$r^E$}  & {$r^\ast$} & {$r^E$}  \\ \midrule
+			2   & 1,05 & 0.366025   & 0.414214 & {---\tnote{\textdagger}} & {---\tnote{\textdaggerdbl}} & 0.356123   & 0.411125 & 0.41334    & 0.445146 & {---\tnote{\textdagger}} & 0.355085 & 0.372515   & 0.420418 & 0.42264    & 0.450987 \\
+			2   & 1,1  & 0.366025   & 0.414214 & {---\tnote{\textdagger}} & {---\tnote{\textdaggerdbl}} & 0.362406   & 0.414178 & 0.41457    & 0.445892 & {---\tnote{\textdagger}} & 0.375133 & 0.376669   & 0.422582 & 0.423198   & 0.451321 \\
+			2   & 1,5  & 0.366025   & 0.414214 & 0.314456                 & 0.387591                    & 0.381381   & 0.424747 & 0.419497   & 0.44893  & 0.36692                  & 0.416569 & 0.389781   & 0.430032 & 0.424991   & 0.452402 \\
+			2   & 2    & 0.366025   & 0.414214 & 0.358364                 & 0.410639                    & 0.388093   & 0.428828 & 0.421703   & 0.450309 & 0.38419                  & 0.426594 & 0.394173   & 0.43269  & 0.425454   & 0.452683 \\
+			2   & 2,5  & 0.366025   & 0.414214 & 0.371781                 & 0.418661                    & 0.391031   & 0.430651 & 0.422748   & 0.450967 & 0.390101                 & 0.430175 & 0.395897   & 0.433749 & 0.425577   & 0.452759 \\
+			2   & 3    & 0.366025   & 0.414214 & 0.378454                 & 0.422759                    & 0.392682   & 0.431685 & 0.423357   & 0.451351 & 0.392935                 & 0.431914 & 0.396766   & 0.434287 & 0.425622   & 0.452786 \\
+			2   & 4    & 0.366025   & 0.414214 & 0.385137                 & 0.426919                    & 0.394479   & 0.432815 & 0.424037   & 0.45178  & 0.395532                 & 0.433519 & 0.397589   & 0.434797 & 0.42565    & 0.452803 \\
+			2   & 6    & 0.366025   & 0.414214 & 0.390502                 & 0.430292                    & 0.396033   & 0.433797 & 0.42464    & 0.452162 & 0.397267                 & 0.434596 & 0.398152   & 0.435148 & 0.42566    & 0.452809 \\
+			2   & 8    & 0.366025   & 0.414214 & 0.392807                 & 0.431749                    & 0.396735   & 0.434242 & 0.424917   & 0.452338 & 0.397853                 & 0.434961 & 0.398345   & 0.435268 & 0.425662   & 0.45281  \\
+			2   & 10   & 0.366025   & 0.414214 & 0.39409                  & 0.432561                    & 0.397134   & 0.434495 & 0.425076   & 0.452438 & 0.39812                  & 0.435128 & 0.398434   & 0.435323 & 0.425662   & 0.45281  \\ \bottomrule
+		\end{tabular}
+		\begin{tablenotes}[para]
+			\item[\textdagger] keine Lösung für $r^\ast > \flatfrac{d}{s}$
+			\item[\textdaggerdbl] keine Lösung für $r^E > \flatfrac{d}{s}$
+		\end{tablenotes}
+	\end{threeparttable}
+\end{sidewaystable}
+
+\begin{sidewaystable}[!p]\sisetup{round-mode=places,round-precision=4,table-format=1.4,table-number-alignment=center,table-text-alignment=center}\footnotesize
+	\begin{threeparttable}
+		\caption{Optimale Diversifikationsgrade für $d\!=\!\flatfrac{1}{3}$ und ausgewählte Werte für $q$ und $s$ bezüglich einer Normalverteilung.}%
+		\label{tbl:numeric:normal}
+		\begin{tabular}{>{\bfseries}c>{\bfseries}cSSSSSSSSSSSS}\toprule
+			\multicolumn{2}{c}{\multirow{2}{*}{\raisebox{-9pt}{\breakC{Modell-\\Parameter}}}} & \multicolumn{12}{c}{Normalverteilung} \\ \cmidrule(lr){3-14}
+			&		& \multicolumn{2}{c}{$\mu=\flatfrac{s}{2}$, $\sigma=\flatfrac{s}{2}$}		& \multicolumn{2}{c}{$\mu=\flatfrac{s}{4}$, $\sigma=\flatfrac{s}{2}$}		& \multicolumn{2}{c}{$\mu=\flatfrac{3s}{4}$, $\sigma=\flatfrac{s}{2}	$}	& \multicolumn{2}{c}{$\mu=\flatfrac{s}{2}$, $\sigma=\flatfrac{s}{4}$}		& \multicolumn{2}{c}{$\mu=\flatfrac{s}{4}$, $\sigma=\flatfrac{s}{4}$}		& \multicolumn{2}{c}{$\mu=\flatfrac{3s}{4}$, $\sigma=\flatfrac{s}{4}$}		\\ \cmidrule(lr){1-2} \cmidrule(lr){3-4} \cmidrule(lr){5-6} \cmidrule(lr){7-8} \cmidrule(lr){9-10} \cmidrule(lr){11-12} \cmidrule(lr){13-14}
+			$q$  & $s$ & {$r^\ast$} & {$r^E$}  & {$r^\ast$} & {$r^E$}  & {$r^\ast$} & {$r^E$}  & {$r^\ast$} & {$r^E$}  & {$r^\ast$} & {$r^E$}  & {$r^\ast$} & {$r^E$}  \\ \midrule
+			1,05 & 5   & 0.488847   & 0.49429  & 0.488364   & 0.494043 & 0.489292   & 0.494518 & 0.490627   & 0.495201 & 0.489115   & 0.494427 & 0.49177    & 0.495786 \\
+			1,1  & 5   & 0.478676   & 0.488847 & 0.477751   & 0.488364 & 0.479526   & 0.489292 & 0.482076   & 0.490627 & 0.479186   & 0.489115 & 0.484262   & 0.49177  \\
+			1,5  & 5   & 0.419635   & 0.452699 & 0.416154   & 0.450649 & 0.422834   & 0.454584 & 0.432359   & 0.460226 & 0.421464   & 0.453814 & 0.440575   & 0.46507  \\
+			2    & 5   & 0.374389   & 0.419635 & 0.368952   & 0.416154 & 0.379374   & 0.422834 & 0.394042   & 0.432359 & 0.377004   & 0.421464 & 0.406836   & 0.440575 \\
+			2,5  & 5   & 0.343609   & 0.394498 & 0.336842   & 0.389929 & 0.349799   & 0.398691 & 0.367793   & 0.411104 & 0.346562   & 0.396798 & 0.383668   & 0.42187  \\
+			3    & 5   & 0.320652   & 0.374389 & 0.312893   & 0.368952 & 0.327732   & 0.379374 & 0.348085   & 0.394042 & 0.323705   & 0.377004 & 0.366234   & 0.406836 \\
+			4    & 5   & 0.28774    & 0.343609 & 0.278556   & 0.336842 & 0.296085   & 0.349799 & 0.319578   & 0.367793 & 0.290626   & 0.346562 & 0.340949   & 0.383668 \\
+			6    & 5   & 0.247038   & 0.302552 & 0.236074   & 0.294011 & 0.256925   & 0.31033  & 0.283781   & 0.332449 & 0.248964   & 0.305567 & 0.309069   & 0.352377 \\
+			8    & 5   & 0.221541   & 0.275285 & 0.209434   & 0.265559 & 0.232382   & 0.284104 & 0.260952   & 0.308696 & 0.222202   & 0.277982 & 0.288658   & 0.331274 \\
+			10   & 5   & 0.203442   & 0.255274 & 0.190496   & 0.244673 & 0.214959   & 0.264851 & 0.244506   & 0.291082 & 0.202726   & 0.257482 & 0.273917   & 0.315584 \\ \bottomrule
+		\end{tabular}
+	\end{threeparttable}
+
+	\bigskip\bigskip  % provide some separation between the two tables
+
+	\begin{threeparttable}
+		\begin{tabular}{>{\bfseries}c>{\bfseries}cSSSSSSSSSSSS}\toprule
+			\multicolumn{2}{c}{\multirow{2}{*}{\raisebox{-9pt}{\breakC{Modell-\\Parameter}}}} & \multicolumn{12}{c}{Normalverteilung} \\ \cmidrule(lr){3-14}
+			&		& \multicolumn{2}{c}{$\mu=\flatfrac{s}{4}$, $\sigma=\flatfrac{s}{2}$}		& \multicolumn{2}{c}{$\mu=\flatfrac{s}{2}$, $\sigma=\flatfrac{s}{2}$}		& \multicolumn{2}{c}{$\mu=\flatfrac{3s}{4}$, $\sigma=\flatfrac{s}{2}	$}	& \multicolumn{2}{c}{$\mu=\flatfrac{s}{4}$, $\sigma=\flatfrac{s}{4}$}		& \multicolumn{2}{c}{$\mu=\flatfrac{s}{2}$, $\sigma=\flatfrac{s}{4}$}		& \multicolumn{2}{c}{$\mu=\flatfrac{3s}{4}$, $\sigma=\flatfrac{s}{4}$}		\\ \cmidrule(lr){1-2} \cmidrule(lr){3-4} \cmidrule(lr){5-6} \cmidrule(lr){7-8} \cmidrule(lr){9-10} \cmidrule(lr){11-12} \cmidrule(lr){13-14}
+			$q$ & $s$  & {$r^\ast$}               & {$r^E$}  & {$r^\ast$} & {$r^E$}  & {$r^\ast$} & {$r^E$}  & {$r^\ast$}               & {$r^E$}                     & {$r^\ast$} & {$r^E$}  & {$r^\ast$} & {$r^E$}  \\ \midrule
+			2   & 1,05 & {---\tnote{\textdagger}} & 0.383526 & 0.355717   & 0.409532 & 0.382493   & 0.425673 & {---\tnote{\textdagger}} & {---\tnote{\textdaggerdbl}} & 0.338181   & 0.403205 & 0.415345   & 0.446765 \\
+			2   & 1,1  & 0.318064                 & 0.388437 & 0.359431   & 0.411586 & 0.383933   & 0.426495 & {---\tnote{\textdagger}} & {---\tnote{\textdaggerdbl}} & 0.351643   & 0.409946 & 0.417585   & 0.448105 \\
+			2   & 1,5  & 0.351587                 & 0.406124 & 0.372706   & 0.419116 & 0.388237   & 0.428876 & 0.269268                 & 0.37346                     & 0.390692   & 0.431258 & 0.424462   & 0.452181 \\
+			2   & 2    & 0.362354                 & 0.412346 & 0.376451   & 0.421223 & 0.3878     & 0.428437 & 0.350981                 & 0.406957                    & 0.399826   & 0.436508 & 0.423815   & 0.451648 \\
+			2   & 2,5  & 0.366115                 & 0.414551 & 0.377004   & 0.421464 & 0.386182   & 0.427323 & 0.366779                 & 0.415726                    & 0.40108    & 0.437125 & 0.420978   & 0.449773 \\
+			2   & 3    & 0.367714                 & 0.415483 & 0.376695   & 0.421205 & 0.384484   & 0.42619  & 0.372706                 & 0.419116                    & 0.400256   & 0.436502 & 0.417774   & 0.447681 \\
+			2   & 4    & 0.368785                 & 0.416084 & 0.375527   & 0.420395 & 0.381582   & 0.424277 & 0.376451                 & 0.421223                    & 0.397172   & 0.434424 & 0.411807   & 0.443802 \\
+			2   & 6    & 0.368867                 & 0.41608  & 0.373437   & 0.419008 & 0.377685   & 0.421734 & 0.376695                 & 0.421205                    & 0.391316   & 0.430573 & 0.40276    & 0.437930 \\
+			2   & 8    & 0.36854                  & 0.41585  & 0.372016   & 0.418079 & 0.375305   & 0.42019  & 0.375527                 & 0.420395                    & 0.387055   & 0.427793 & 0.396574   & 0.43392  \\
+			2   & 10   & 0.368224                 & 0.415639 & 0.371034   & 0.41744  & 0.373722   & 0.419165 & 0.374389                 & 0.419635                    & 0.383964   & 0.425784 & 0.392141   & 0.431048 \\ \bottomrule
+		\end{tabular}
+		\begin{tablenotes}[para]
+			\item[\textdagger] keine Lösung für $r^\ast > \flatfrac{d}{s}$
+			\item[\textdaggerdbl] keine Lösung für $r^E > \flatfrac{d}{s}$
+		\end{tablenotes}
+	\end{threeparttable}
+\end{sidewaystable}
+
+Die Ergebnisse zeigen, dass \citeauthor{Wagner-2010}s Erkenntnisse, dass Banken tendenziell überdiversifizieren, auch für die untersuchten uni-modale Verteilungen prinzipiell zuzutreffen scheint. Der Grad der Überdiversifizierung kann dabei durchaus größer sein als der für die Gleichverteilung bestimmte Wert in \cref{sec:div:equal}. Ferner scheint auch die Erkenntnis zuzutreffen, dass für $q$ nahe eins eine vollständige Diversifizierung optimal ist. Anders als bei der Gleichverteilung hängt bei den uni-modalen Verteilungen der optimale Diversifikationsgrad auch vom Parameter $s$ ab und nicht ausschließlich vom Parameter $q$. Dies ist darauf zurückzuführen, dass sich mit dem Parameter $s$ bei einer uni-modalen Verteilung der Modus in Relation zu $d$ verschiebt. Wie die Ergebnisse zeigen, hängt der optimale Diversifizierungsgrad auch von der Lage des Modus der Verteilung ab.
+
+Die prinzipielle Machbarkeit der numerischen Bestimmung der optimalen Diversifikationsgrade hängt ebenfalls stark von der zu betrachtenden Verteilung ab. Während sich die Zeit für die Berechnungen im Rahmen der Beta- und Kumaraswamy-Verteilung sich lediglich im Bereich von Sekunden bewegte, lag die Zeit für die Berechnung bezüglich der Normalverteilung im Bereich von Minuten und Stunden. Bei der Normalverteilung konnte insbesondere ein massiver Anstieg der Rechenzeit bei Verringerung der Varianz beobachtet werden. Es kann davon ausgegangen werden, dass die Rechenzeit für bi- und multi-modale Verteilungen noch einmal um Größenordnungen höher liegt. Somit können für solche Verteilungen nur punktuelle Bestimmungen vorgenommen werden und nicht ein gesamter Parameterraum analysiert werden.

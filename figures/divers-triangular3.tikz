@@ -1,0 +1,39 @@
+\begin{tikzpicture}[x=0.66cm, y=0.66cm]\small
+	\path[draw, fill=system]     (0,0) --  (6,0)  -- (4,4)   -- (0,6)  -- cycle;
+	\path[draw, fill=individual] (6,0) --  (12,0) -- (4,4)   -- cycle;
+	\path[draw, fill=individual] (0,6) --  (0,12) -- (4,4)   -- cycle;
+	\path[draw, fill=normal]     (12,0) -- (13,0) -- (13,13) -- (0,13) -- (0,12) -- (4,4) -- cycle;
+
+	\draw[densely dotted, line width=0.75pt] (4,0) -- ++(0,13);
+	\draw[densely dotted, line width=0.75pt] (0,4) -- ++(13,0);
+	\draw[line width=1pt] (0,12) -- (6,0);
+	\draw[line width=1pt] (12,0) -- (0,6);
+
+	\draw[red, line width=1.5pt] (0,0) -- (6.5,5) -- (13,0);
+	\draw[red, line width=1.5pt] (0,0) -- (5,6.5) -- (0,13);
+	\draw[dotted, red, line width=1pt] (6.5,0) -- (6.5,5);
+	\draw[dotted, red, line width=1pt] (0,6.5) -- (5,6.5);
+
+
+	\draw (4,0)  -- ++(0,-0.3) node[anchor=base, yshift=-1.1em] {$d$};
+	\draw (0,4)  -- ++(-0.3,0) node[anchor=east]                {$d$};
+	\draw (13,0) -- ++(0,-0.3) node[anchor=base, yshift=-1.1em] {$s$};
+	\draw (0,13) -- ++(-0.3,0) node[anchor=east]                {$s$};
+	\draw[red] (6.5,0) -- ++(0,-0.3) node[anchor=base, yshift=-1.1em, xshift=0.5em] {\color{red} $\flatfrac{s}{2}$};
+	\draw[red] (0,6.5) -- ++(-0.3,0) node[anchor=east, yshift=0.2em]                {\color{red} $\flatfrac{s}{2}$};
+
+	\draw (6,0)  -- ++(0,-0.3) node[anchor=base, yshift=-1.1em, xshift=-0.75em] {$x_1(0)$};
+	\draw (12,0) -- ++(0,-0.3) node[anchor=base, yshift=-1.1em, xshift=-0.5em]  {$x_2(0)$};
+	\draw (0,6)  -- ++(-0.3,0) node[anchor=east, yshift=-0.2em] {$y_1(0)$};
+	\draw (0,12) -- ++(-0.3,0) node[anchor=east]                {$y_1(0)$};
+
+	\node at (1.8,11)   {$y_1(x)$};
+	\node at (10.5,1.5) {$y_2(x)$};
+	\node at (8.25,4.75) {\color{red} $\phi_\wedge(x)$};
+	\node at (5.25,7.75) {\color{red} $\phi_\wedge(y)$};
+
+	\path[<->, draw, line width=1.5pt] (15,0) -- (0,0) -- (0,15);
+
+	\node[anchor=base, yshift=-1em] at (14.25,0) {$X$};
+	\node[anchor=east]              at (0,14.25) {$Y$};
+\end{tikzpicture}

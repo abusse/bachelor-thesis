@@ -1,0 +1,31 @@
+%!TEX root = bachelor.tex
+
+\chapter{Basismodell}%
+\label{chap:basic}
+
+In diesem Kapitel soll zunächst das Basismodel erläutert werden, welches in der betrachteten Arbeit von \citeauthor{Wagner-2010} im zweiten Abschnitt diskutiert wird und die Grundlage für den Rest dieser Arbeit darstellt\footcite[\ppno~375--377(3--5)]{Wagner-2010}.
+
+\Citeauthor{Wagner-2010} geht vereinfachend davon aus, dass lediglich zwei Banken existieren. Jede Bank hat ein Kapital von einer monetären Einheit, welches sich aus Einlagen der Kunden und Eigenmitteln zusammensetzt. Der Anteil der Einlagen wird hierbei mit $d$ bezeichnet. Ferner werden drei Zeitpunkte betrachtet. Zum Zeitpunkt~1 investiert jede der beiden Banken ihr gesamtes Kapital in Höhe einer monetären Einheit in unterschiedliche Aktivitäten. Diese können sich \zb in der geographischen Region des Investments oder der Branche unterscheiden. Bank~1 investiert hierbei in Aktivität $X$ und Bank~2 in Aktivität $Y$. Jedes Investment wird zum Zeitpunkt~3 einen Wert in Höhe von $x$ \bzw{} $y$ haben. Die möglichen Realisierungen sind dabei unabhängig gemäß $\phi(\cdot)$ verteilt, das eine Realisierung im Intervall $[0,s]$ mit $s\!>\!0$ erlaubt. Zum Zeitpunkt~2 können die Investments an eine andere Bank verkauft werden. Dies kann jedoch nur mit einem Abschlag in Höhe von $c$ erfolgen, da nur die ursprüngliche Bank die Anlage optimal bewirtschaften kann und der Wert des Investments somit für die Käuferin geringer ist. Die Anlage kann jedoch auch zum Zeitpunkt~2 vorzeitig liquidiert werden, wobei der Wert der Anlage um $qc$ mit $q\!>\!1$ sinkt.
+
+Im Model von \citeauthor{Wagner-2010} werden zum Zeitpunkt~2 die Höhe von $x$ \bzw $y$ bekannt. Sollte der Wert der Investments kleiner sein als die Einlagen der Kunden $d$, ist die Bank zum Zeitpunkt~3 als insolvent anzusehen. Dies führt dazu, dass die Kunden ihre Konten auflösen. Um diese zu bedienen, muss die Bank die Anlage entweder verkaufen oder liquidieren. Im Falle einer systemischen Krise, in der beide Banken ihr Portfolio verkaufen oder liquidieren müssen, bleibt nur die zweite Option, da keine andere Bank die Anlage kaufen könnte.
+
+\begin{figure}[t!]\centering
+	\resizebox{0.95\textwidth}{!}{
+		\includetikz{figures/basic}
+	}
+	\caption[Krisen im nicht diversifizierten Bankensektor.]{Krisen im nicht diversifizierten Bankensektor\footnotemark. Keine Krise im grünen Bereich, individuelle Krisen in gelben Bereichen und systemische Krise im roten Bereich.}%
+	\label{fig:basic}
+\end{figure}
+\footcitetext[nach][\pno~376(4), Fig.~1]{Wagner-2010}
+
+Aus dem Model ergeben sich drei mögliche Situationen zum Zeitpunkt~2:
+
+\begin{itemize}
+	\item Keine Krise für $x \geq d \,\wedge\, y \geq d$
+	\item Individuelle Krise einer Bank für $x < d \,\veebar\, y < d$
+	\item Systemische Krise für $x < d \,\wedge\, y < d$
+\end{itemize}
+
+Diese drei Fälle sind im Diagramm in \cref{fig:basic} zusammengefasst. Im grünen Bereich~A besteht keine Krise, da sowohl dir Realisation von $X$ als auch $Y$ größer als $d$ sind. Im roten Bereich~B herrscht eine systemische Krise, da beide Realisationen kleiner als $d$ sind. In den gelben Bereichen~C und~D herrscht eine individuelle Krise der Bank~1 \bzw{} der Bank~2, da die Realisation von $X$ \bzw{} $Y$ kleiner als $d$ ist.
+
+Schlussendlich wird die Wohlfahrt in diesem Modell von \citeauthor{Wagner-2010} wie folgt definiert: Gegeben der Wert der Anlage der Bank $i \,\in\, {1,2}$ sei $v_i=\{v_1=x, v_2=y\}$ im Nicht-Krisen-Fall, dann ist der erwartet Wert der Bank $W_i = \mathbb{E}(v_i) - c(\pi^I_i + q\pi^S)$. Der Parameter $\pi^S$ ist hierbei die Wahrscheinlichkeit einer systemischen Krise und der Parameter $\pi^I_i$ die Wahrscheinlichkeit einer individuellen Krise der Bank $i$. Hieraus ergibt sich die Gesamtwohlfahrt als $W_1 + W_2 = \mathbb{E}(v_1) + \mathbb{E}(v_2) - c(\pi^I_1 + \pi^I_2 + 2q\pi^S)$.

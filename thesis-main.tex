@@ -3,23 +3,26 @@
 
 \documentclass[twoside, 12pt, a4paper, ngerman, final]{report}
 
-% Document properties %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% In- and Output Encoding %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\pdfinfo{
-	/Author   (Anselm Busse)
-	/Title    (Analyse der Diversifikation im Bankensektor als Ursache systemischer Risiken)
-	/Subject  (Bachelorarbeit)
-	/Keywords (Systemische Risiken, Banken, Diversifikation)
-}
+\usepackage[utf8]{inputenc}
+\usepackage{cmap}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+
+% Document Metadata %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\Author   {Anselm Busse}
+\def\Title    {Analyse der Diversifikation im Bankensektor als Ursache systemischer Risiken}
+\def\Subject  {Bachelorarbeit} 
+\def\Keywords {Systemische Risiken, Banken, Diversifikation}
 
 % Included packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage{morewrites}					% we will need more than 16 write handles
-\usepackage[utf8]{inputenc}				% use UTF-8 input encoding
-\usepackage{lmodern}
-\usepackage[T1]{fontenc}				% western font encoding, improve hyphenation
 \usepackage{textcomp}
 \usepackage{tipa}						% Text-mode Accents (e.g. \textpolhook{a})
 \usepackage[main=ngerman, english]{babel}% set main language
@@ -105,19 +108,24 @@
 
 \usepackage[a-1b]{pdfx}
 \hypersetup{final,            %links are only inserted in final mode
-            %pdfpagemode={UseOutlines},
-            bookmarksopen=false,bookmarksopenlevel=0,
-            bookmarksnumbered=true,
-            hypertexnames=false,
-            pdfstartview={FitV},
-            colorlinks=false,linkcolor={black},citecolor={black},urlcolor={black},
-            linktoc=all,
-            breaklinks=true,
-            %pagebackref=true,
-            plainpages=false,
-            pageanchor=true,
-            %backref=page
-            }
+      %pdfpagemode={UseOutlines},
+      pdfauthor={\Author},%
+      pdftitle={\Title},%
+      pdfsubject={\Subject},%
+      pdfkeywords={\Keywords},%
+      bookmarksopen=false,bookmarksopenlevel=0,
+      bookmarksnumbered=true,
+      hypertexnames=false,
+      pdfstartview={FitV},
+      colorlinks=false,linkcolor={black},citecolor={black},urlcolor={black},
+      linktoc=all,
+      breaklinks=true,
+      %pagebackref=true,
+      plainpages=false,
+      pageanchor=true,
+      hidelinks,
+      %backref=page,
+      }
 \PassOptionsToPackage{dvipsnames}{xcolor}
 
 \usepackage[capitalise]{cleveref}		% more sophisticated references 
